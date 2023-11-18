@@ -6,9 +6,6 @@ import { RolesService } from 'src/roles/roles.service';
 
 @Injectable()
 export class UsersService {
-  getUserByEmail(email: string) {
-    throw new Error('Method not implemented.');
-  }
   constructor(
     @InjectModel(User) private userRepository: typeof User,
     private roleService: RolesService,
@@ -24,5 +21,14 @@ export class UsersService {
   async getAllUsers() {
     const users = await this.userRepository.findAll({ include: { all: true } });
     return users;
+  }
+
+  async getUserByEmail(email: string) {
+    const user = await this.userRepository.findOne({
+      where: { email },
+      include: { all: true },
+    });
+
+    return user;
   }
 }
