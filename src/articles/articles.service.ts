@@ -20,6 +20,15 @@ export class ArticlesService {
     return post;
   }
 
+  async getArticleById(id: string) {
+    const article = await this.articleRepository.findOne({
+      where: { id },
+      include: { all: true },
+    });
+
+    return article;
+  }
+
   async getAllArticles() {
     const article = await this.articleRepository.findAll({
       include: { all: true },

@@ -2,6 +2,7 @@ import {
   Body,
   Controller,
   Get,
+  Param,
   Post,
   UploadedFile,
   UseInterceptors,
@@ -18,6 +19,14 @@ export class ArticlesController {
   @UseInterceptors(FileInterceptor('image'))
   createArticle(@Body() dto: CreateArticleDto, @UploadedFile() image) {
     return this.articleService.create(dto, image);
+  }
+
+  @Get(':id')
+  async getArticle(
+    @Param('id')
+    id: string,
+  ) {
+    return this.articleService.getArticleById(id);
   }
 
   @Get()
