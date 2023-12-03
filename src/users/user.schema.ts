@@ -10,6 +10,7 @@ import { Role } from 'src/schemas/roles.schema';
 import { UserRoles } from 'src/schemas/user-roles.schema';
 
 interface UserAttributes {
+  name: string;
   email: string;
   password: string;
 }
@@ -24,6 +25,10 @@ export class User extends Model<User, UserAttributes> {
     primaryKey: true,
   })
   id: number;
+
+  @ApiProperty({ example: 'John Johnson', description: 'Nickname' })
+  @Column({ type: DataType.STRING, unique: true, allowNull: false })
+  name: string;
 
   @ApiProperty({ example: 'user@mail.com', description: 'Email' })
   @Column({ type: DataType.STRING, unique: true, allowNull: false })

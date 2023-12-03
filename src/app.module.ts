@@ -9,6 +9,8 @@ import { UserRoles } from './schemas/user-roles.schema';
 import { AuthModule } from './auth/auth.module';
 import { ArticlesModule } from './articles/articles.module';
 import { Article } from './articles/schema/articles.schema';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
 
 @Module({
   imports: [
@@ -29,6 +31,10 @@ import { Article } from './articles/schema/articles.schema';
     RolesModule,
     AuthModule,
     ArticlesModule,
+
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', 'client'),
+    }),
   ],
   controllers: [],
   providers: [],

@@ -1,14 +1,16 @@
-<div class="row">
-    <div class="articles" *ngFor="let article of articles$ | async">
-        <img [src]="article.image" alt="..." class="card-img-top">
-        <div class="card-body">
-            <a class="card-link">
-                {{article.title}}
-            </a>
-            <div class="card-content">
-                {{article.content}}
+<div class="artciles">
+        <div class="articles" *ngFor="let article of articles$ | async">
+            <img src="http://localhost:1268/{{ article.image }}" class="card-img-top">
+            <div class="card-body">
+                <a class="card-link">
+                    {{article.title}}
+                </a>
+                <div class="card-content">
+                    {{article.content}}
+                </div>
+                <p>
+                    {{article.author.email}}
+                </p>
             </div>
-            <p>{{article.data.author}}</p>
         </div>
-    </div>
 </div>
