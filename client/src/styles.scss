@@ -1,4 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
-
-/* Importing Bootstrap SCSS file. */
-@import 'bootstrap/scss/bootstrap';
+@font-face {
+    font-family: "Barlow-Condensed";
+    src: url("assets/fonts/Barlow_Condensed/BarlowCondensed-Light.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}

@@ -9,8 +9,10 @@ import { UserRoles } from './schemas/user-roles.schema';
 import { AuthModule } from './auth/auth.module';
 import { ArticlesModule } from './articles/articles.module';
 import { Article } from './articles/schema/articles.schema';
-import { ServeStaticModule } from '@nestjs/serve-static';
-import { join } from 'path';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
+import { CalendarModule } from './calendar/calendar.module';
+import { Calendar } from './calendar/schema/calendar.schema';
 
 @Module({
   imports: [
@@ -24,19 +26,17 @@ import { join } from 'path';
       username: process.env.POSTGRES_USER,
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_DB,
-      models: [User, Role, UserRoles, Article],
+      models: [User, Role, UserRoles, Article, Calendar],
       autoLoadModels: true,
+      synchronize: true,
     }),
     UsersModule,
     RolesModule,
     AuthModule,
     ArticlesModule,
-
-    ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '..', 'client'),
-    }),
+    CalendarModule,
   ],
-  controllers: [],
-  providers: [],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}

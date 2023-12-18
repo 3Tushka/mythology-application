@@ -13,6 +13,7 @@ interface ArticlesCreationAttributes {
   title: string;
   content: string;
   image: string;
+  category: string;
 }
 
 @Table({ tableName: 'articles' })
@@ -28,11 +29,14 @@ export class Article extends Model<Article, ArticlesCreationAttributes> {
   @Column({ type: DataType.STRING, unique: true, allowNull: false })
   title: string;
 
-  @Column({ type: DataType.STRING, allowNull: false })
+  @Column({ type: DataType.STRING(10000), allowNull: false })
   content: string;
 
   @Column({ type: DataType.STRING, allowNull: true })
   image: string;
+
+  @Column({ type: DataType.STRING, allowNull: true })
+  category: string;
 
   @ForeignKey(() => User)
   @Column({ type: DataType.INTEGER })

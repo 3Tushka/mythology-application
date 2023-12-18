@@ -1,4 +1,14 @@
-.articles {
+.article {
     padding: 3rem 1.2rem;
-    background-color: rgb(241, 222, 189);
+    background-color: bisque;
+
+    &__item {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__body {
+        max-width: 8rem;
+        font-family: "Barlow-Condensed";
+    }
 }
