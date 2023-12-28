@@ -1,0 +1,22 @@
+<app-navbar></app-navbar>
+
+<div class="calendar">
+    <div class="calendar__item" *ngFor="let calendar of calendar$ | async">
+        <div class="article__body">
+            <div class="article__day">
+                {{calendar.day}}
+            </div>
+
+            <div class="article__month">
+                {{calendar.month}}
+            </div>
+
+            <a class="article__title">
+                {{calendar.title}}
+            </a>
+            <div class="article__content">
+                {{calendar.content}}
+            </div>
+        </div>
+    </div>
+</div>

@@ -3,11 +3,13 @@ import {
   BelongsToMany,
   Column,
   DataType,
+  HasMany,
   Model,
   Table,
 } from 'sequelize-typescript';
-import { Role } from 'src/schemas/roles.schema';
-import { UserRoles } from 'src/schemas/user-roles.schema';
+import { Role } from 'src/roles/schemas/roles.schema';
+import { UserRoles } from 'src/roles/schemas/user-roles.schema';
+import { Message } from 'src/socket/shema/message.schema';
 
 interface UserAttributes {
   email: string;
@@ -47,4 +49,7 @@ export class User extends Model<User, UserAttributes> {
 
   @BelongsToMany(() => Role, () => UserRoles)
   role: Role[];
+
+  @HasMany(() => Message)
+  messages: Message[];
 }

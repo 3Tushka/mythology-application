@@ -1,6 +1,6 @@
 .article {
     padding: 3rem 1.2rem;
-    background-color: bisque;
+    background-color: #111111;
 
     &__item {
         display: flex;
@@ -8,7 +8,8 @@
     }
 
     &__body {
-        max-width: 8rem;
+        max-width: 50%;
         font-family: "Barlow-Condensed";
+        color: aliceblue;
     }
 }
