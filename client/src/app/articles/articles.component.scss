@@ -1,15 +1,33 @@
-.article {
-    padding: 3rem 1.2rem;
-    background-color: #111111;
+@import "../../assets/variables.scss";
 
-    &__item {
-        display: flex;
-        flex-direction: column;
+.article {
+    padding: 5rem 1.2rem 0;
+    background-color: $color-cream;
+
+    display: flex;
+    gap: 2rem;
+
+    .article-card {
+        margin: 3rem 0;
+        max-width: 50svh;
+        background: $background-black;
+        font-family: "Barlow-Condensed";
+        color: $color-cream;
+        cursor: pointer;
+
+        img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
     }
 
-    &__body {
-        max-width: 50%;
-        font-family: "Barlow-Condensed";
-        color: aliceblue;
+    mat-card-title {
+        font-size: 2rem;
+    }
+
+    mat-card-subtitle {
+        font-size: 1.1rem;
+        margin-bottom: 6px;
     }
 }

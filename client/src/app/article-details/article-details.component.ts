@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
-import { ArticleDetailsService } from './article-details.service';
+import { ArticleDetailsInterface } from './article-details.interface';
+import { ServicesService } from '../services.service';
 
 @Component({
   selector: 'app-article-details',
@@ -9,18 +9,26 @@ import { ArticleDetailsService } from './article-details.service';
   styleUrls: ['./article-details.component.scss'],
 })
 export class ArticleDetailsComponent implements OnInit {
-  item$!: Observable<any>;
+  id: string | undefined | null;
+  data: undefined | ArticleDetailsInterface;
 
   constructor(
     private route: ActivatedRoute,
-    private articleDetailsService: ArticleDetailsService,
+    private readonly articleDetailsService: ServicesService,
   ) {}
 
   ngOnInit(): void {
-    const itemId = this.route.snapshot.paramMap.get('id');
+    this.route.paramMap.subscribe((params) => {
+      this.id = params.get('id');
 
-    if (itemId) {
-      this.item$ = this.articleDetailsService.getArticleDetails(+itemId);
-    }
+      if (this.id) {
+        this.articleDetailsService
+          .getArticleDetails(this.id)
+          .subscribe((articleData) => {
+            this.data = articleData;
+            console.log(this.data);
+          });
+      }
+    });
   }
 }

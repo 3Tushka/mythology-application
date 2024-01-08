@@ -1,0 +1,46 @@
+@import "../../assets/variables.scss";
+
+.homepage {
+    background-image: url(../../assets/backgrounds/kiwihug-3gifzboyZk0-unsplash2.jpg);
+    width: 100%;
+    height: 50vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    display: flex;
+    justify-content: center;
+
+    .homepage-wrap {
+        display: flex;
+        justify-content: center;
+        margin: 2rem 15%;
+    }
+
+    &__box:nth-child(2) {
+        max-width: 20%;
+
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    &__logo {
+        font-size: 6rem;
+        font-family: "Barlow-Condensed";
+
+        display: flex;
+
+        margin-right: 5rem;
+    }
+
+    &__bottom::before {
+        content: "";
+        background-color: #1a2126;
+        width: 0.2rem;
+        height: 8.1rem;
+        display: inline-flex;
+        transform: rotate(35deg);
+        margin: 20px 0;
+    }
+}

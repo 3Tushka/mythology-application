@@ -1,0 +1,13 @@
+<div class="calendar-wrapper">
+
+    <app-navbar></app-navbar>
+    <div class="calendar-detail" *ngIf="calendarData">
+        {{calendarData.day}}
+
+        {{calendarData.month}}
+
+        {{calendarData.title}}
+
+        {{calendarData.content}}
+    </div>
+</div>

@@ -1,0 +1,18 @@
+@import "../../assets/variables.scss";
+
+.calendar {
+    background-color: $color-cream;
+    display: flex;
+    flex-direction: row;
+
+    &__header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+}

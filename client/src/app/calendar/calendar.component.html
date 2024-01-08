@@ -1,22 +1,43 @@
-<app-navbar></app-navbar>
-
-<div class="calendar">
-    <div class="calendar__item" *ngFor="let calendar of calendar$ | async">
-        <div class="article__body">
-            <div class="article__day">
-                {{calendar.day}}
-            </div>
-
-            <div class="article__month">
+<div class="calendar-wrapper">
+    <app-navbar></app-navbar>   
+    <div class="wrapper">
+        <div class="calendar"  *ngFor="let calendar of calendar$ | async">
+            <!-- ngSwitch not suitable -->
+            <div class="calendar__condition" *ngIf="calendar?.month =='Січня'">
+                <!-- Рендер місяця лише один раз??? -->
                 {{calendar.month}}
+                <mat-card class="calendar__item" [routerLink]="['/calendar', calendar.id]">
+                    <mat-card-header class="calendar__header">
+                        <mat-card-title class="calendar__day">
+                            <span>{{calendar.day}}</span>
+                        </mat-card-title>
+                        <mat-card-subtitle class="calendar__month">
+                            <span>{{calendar.month}}</span>
+                        </mat-card-subtitle>
+                    </mat-card-header>
+                    <mat-card-content class="calendar__title">
+                        <span>{{calendar.title}}</span>
+                    </mat-card-content>
+                </mat-card>
             </div>
 
-            <a class="article__title">
-                {{calendar.title}}
-            </a>
-            <div class="article__content">
-                {{calendar.content}}
+            <div class="calendar__condition" *ngIf="calendar?.month =='Лютого'">
+                {{calendar.month}}
+                <mat-card class="calendar__item" [routerLink]="['/calendar', calendar.id]">
+                    <mat-card-header class="calendar__header">
+                        <mat-card-title class="calendar__day">
+                            <span>{{calendar.day}}</span>
+                        </mat-card-title>
+                        <mat-card-subtitle class="calendar__month">
+                            <span>{{calendar.month}}</span>
+                        </mat-card-subtitle>
+                    </mat-card-header>
+                    <mat-card-content class="calendar__title">
+                        <span>{{calendar.title}}</span>
+                    </mat-card-content>
+                </mat-card>
             </div>
         </div>
     </div>
+    <app-footer></app-footer>
 </div>

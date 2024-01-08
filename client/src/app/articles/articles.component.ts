@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ArticlesService } from './articles.service';
+import { ServicesService } from '../services.service';
 
 @Component({
   selector: 'app-articles',
@@ -10,7 +10,7 @@ import { ArticlesService } from './articles.service';
 export class ArticlesComponent {
   articles$!: Observable<any>;
 
-  constructor(private articlesService: ArticlesService) {}
+  constructor(private articlesService: ServicesService) {}
 
   ngOnInit(): void {
     this.articles$ = this.articlesService.getArticles();

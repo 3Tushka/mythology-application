@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { CalendarService } from './calendar.service';
 import { Observable } from 'rxjs/internal/Observable';
+import { ServicesService } from '../services.service';
 
 @Component({
   selector: 'app-calendar',
@@ -10,7 +10,7 @@ import { Observable } from 'rxjs/internal/Observable';
 export class CalendarComponent {
   calendar$!: Observable<any>;
 
-  constructor(private calendarService: CalendarService) {}
+  constructor(private calendarService: ServicesService) {}
 
   ngOnInit(): void {
     this.calendar$ = this.calendarService.getCalendar();
