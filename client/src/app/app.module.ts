@@ -22,6 +22,7 @@ import { CalendarDetailsComponent } from './calendar-details/calendar-details.co
 import { FooterComponent } from './footer/footer.component';
 import { AuthFormLoginComponent } from './auth-form-login/auth-form-login.component';
 import { AuthFormRegisterComponent } from './auth-form-register/auth-form-register.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,8 @@ import { AuthFormRegisterComponent } from './auth-form-register/auth-form-regist
     MatCardModule,
     MatGridListModule,
     MatIconModule,
+    ReactiveFormsModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
