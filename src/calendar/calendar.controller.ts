@@ -1,4 +1,12 @@
-import { Body, Controller, UseGuards, Post, Get, Param } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  UseGuards,
+  Post,
+  Get,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { CalendarService } from './calendar.service';
 import { Roles } from 'src/auth/decorator/roles-auth.decorator';
 import { RolesGuard } from 'src/auth/guards/roles.guard';
@@ -26,5 +34,12 @@ export class CalendarController {
   @Get()
   getAll() {
     return this.calendarService.getCalendarItemsAll();
+  }
+
+  @Roles('admin')
+  @UseGuards(RolesGuard)
+  @Delete(':id')
+  deleteCalendarItem(@Param('id') id: number) {
+    return this.calendarService.deleteCalendarItem(+id);
   }
 }

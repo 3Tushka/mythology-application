@@ -1,4 +1,9 @@
-import { Injectable } from '@nestjs/common';
+import {
+  HttpException,
+  HttpStatus,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { Calendar } from './schema/calendar.schema';
 import { InjectModel } from '@nestjs/sequelize';
 import { CreateCalendarDto } from './dto/calendar.dto';
@@ -30,5 +35,12 @@ export class CalendarService {
       include: { all: true },
     });
     return calendarItem;
+  }
+
+  async deleteCalendarItem(id: number): Promise<void> {
+    await this.calendarRepository.destroy({
+      where: { id },
+    });
+    console.log(`Calendar ${id} was  Deleted`);
   }
 }

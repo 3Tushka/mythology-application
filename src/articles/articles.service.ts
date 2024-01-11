@@ -3,11 +3,12 @@ import { Article } from './schema/articles.schema';
 import { InjectModel } from '@nestjs/sequelize';
 import { CreateArticleDto } from './dto/create-article.dto';
 import { FilesService } from 'src/files/files.service';
+import { Repository } from 'sequelize-typescript';
 
 @Injectable()
 export class ArticlesService {
   constructor(
-    @InjectModel(Article) private articleRepository: typeof Article,
+    @InjectModel(Article) private articleRepository: Repository<Article>,
     private fileService: FilesService,
   ) {}
 
@@ -34,5 +35,12 @@ export class ArticlesService {
       include: { all: true },
     });
     return article;
+  }
+
+  async deleteArticle(id: number): Promise<void> {
+    await this.articleRepository.destroy({
+      where: { id },
+    });
+    console.log('Article was Deleted');
   }
 }
