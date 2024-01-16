@@ -1,26 +1,57 @@
 <div class="article-wrapper">
-    <app-navbar></app-navbar>
-    <div class="art" *ngIf="data?.category == 'Creatures' ">
-        <div class="article-detail" *ngIf="data">
-            <div class="article-detail__box">
-                <div class="article-detail__info">
-                    <div class="article-detail__info__title">
-                        <span class="article-detail__info__title__main">{{data.title}}</span>
-                        <span class="article-detail__info__title__">{{data.category}}</span>
-                    </div>
-                    <div class="article-detail__info__content">
-                        <span><p>{{data.content}}</p></span>
-                    </div>
-                </div>
+  <app-navbar></app-navbar>
+  <div class="art" *ngIf="data?.category == 'Vampires'">
+    <div class="article-detail" *ngIf="data">
+      <div class="article-detail__upper">
+        <div class="article-detail__box">
+          <div class="article-detail__info">
+            <div class="article-detail__info__title">
+              <span class="article-detail__info__title__main">{{
+                data.title
+              }}</span>
+              <span class="article-detail__info__title__">{{
+                data.category
+              }}</span>
             </div>
-            <div class="article-detail__line"></div>
-            <div class="article-detail__box">
-                <div class="article-detail__image">
-                    <!-- change to fetched data.image??? -->
-                    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="card-image"> 
-                </div>
+            <div class="article-detail__info__content">
+              <span
+                ><p>{{ data.content }}</p></span
+              >
             </div>
+          </div>
         </div>
+        <div class="article-detail__line"></div>
+        <div class="article-detail__box">
+          <div class="article-detail__image">
+            <!-- change to fetched data.image??? -->
+            <img
+              mat-card-image
+              src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+              alt="card-image"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="article-detail__controll">
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          (click)="openDialog()"
+        >
+          Update
+        </button>
+
+        <button
+          mat-raised-button
+          color="warn"
+          type="submit"
+          (click)="delete(data.id)"
+        >
+          Delete
+        </button>
+      </div>
     </div>
-    <app-footer></app-footer>
+  </div>
+  <app-footer></app-footer>
 </div>

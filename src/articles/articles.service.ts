@@ -1,9 +1,10 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { Article } from './schema/articles.schema';
 import { InjectModel } from '@nestjs/sequelize';
 import { CreateArticleDto } from './dto/create-article.dto';
 import { FilesService } from 'src/files/files.service';
 import { Repository } from 'sequelize-typescript';
+import { UpdateArticleDto } from './dto/update-article.dto';
 
 @Injectable()
 export class ArticlesService {
@@ -35,6 +36,22 @@ export class ArticlesService {
       include: { all: true },
     });
     return article;
+  }
+
+  async updateArticle(id: number, dto: UpdateArticleDto): Promise<any> {
+    const article = await this.articleRepository.findByPk(id);
+
+    if (!article) {
+      throw new NotFoundException();
+    }
+
+    article.title = dto.title;
+    article.category = dto.category;
+    article.content = dto.content;
+
+    await article.save();
+
+    return article.toJSON();
   }
 
   async deleteArticle(id: number): Promise<void> {

@@ -5,6 +5,7 @@ import {
   Get,
   Param,
   Post,
+  Put,
   UploadedFile,
   UseGuards,
   UseInterceptors,
@@ -14,6 +15,7 @@ import { CreateArticleDto } from './dto/create-article.dto';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { Roles } from 'src/auth/decorator/roles-auth.decorator';
 import { RolesGuard } from 'src/auth/guards/roles.guard';
+import { UpdateArticleDto } from './dto/update-article.dto';
 
 @Controller('articles')
 export class ArticlesController {
@@ -38,6 +40,15 @@ export class ArticlesController {
   @Get()
   getAll() {
     return this.articleService.getAllArticles();
+  }
+
+  @Put(':id')
+  async updateArticle(
+    @Param('id') id: number,
+    @Body() dto: UpdateArticleDto,
+  ): Promise<any> {
+    const res = await this.articleService.updateArticle(+id, dto);
+    return res;
   }
 
   @Roles('admin')

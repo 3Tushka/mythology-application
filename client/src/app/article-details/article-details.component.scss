@@ -11,8 +11,13 @@
         font-size: 1.5rem;
 
         display: flex;
-        flex-direction: row;
-        gap: 5rem;
+        flex-direction: column;
+        gap: 2rem;
+
+        &__upper {
+            display: flex;
+            gap: 5rem;
+        }
 
         &__box {
             margin: 2rem 0;
@@ -62,6 +67,19 @@
                 width: 100%;
                 height: auto;
                 object-fit: cover;
+            }
+        }
+
+        &__controll {
+            display: flex;
+            gap: 5rem;
+            justify-content: center;
+            align-items: center;
+
+            margin: 0 10%;
+
+            button {
+                width: 50%;
             }
         }
     }

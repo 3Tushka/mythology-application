@@ -2,6 +2,7 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { IoAdapter } from '@nestjs/platform-socket.io';
+import * as cookieParser from 'cookie-parser';
 
 async function bootstrap() {
   const PORT = process.env.PORT;
@@ -15,7 +16,7 @@ async function bootstrap() {
     allowedHeaders: 'Content-Type, Accept',
   };
   app.enableCors(options);
-
+  app.use(cookieParser());
   app.useWebSocketAdapter(new IoAdapter(app));
 
   const config = new DocumentBuilder()
