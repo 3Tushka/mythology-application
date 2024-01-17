@@ -43,12 +43,8 @@ export class ArticlesController {
   }
 
   @Put(':id')
-  async updateArticle(
-    @Param('id') id: number,
-    @Body() dto: UpdateArticleDto,
-  ): Promise<any> {
-    const res = await this.articleService.updateArticle(+id, dto);
-    return res;
+  updateArticle(@Param('id') id: number, @Body() updateDTO: UpdateArticleDto) {
+    return this.articleService.updateArticle(id, updateDTO);
   }
 
   @Roles('admin')

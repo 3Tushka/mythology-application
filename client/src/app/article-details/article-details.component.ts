@@ -2,11 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ArticleDetailsInterface } from './article-details.interface';
 import { ServicesService } from '../services.service';
-import { UpdateArticleDto } from '../../../../src/articles/dto/update-article.dto';
 
 import { MatDialog } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { ArticleInterface } from '../interfaces/article.interface';
 
 @Component({
   selector: 'app-article-details',
@@ -51,23 +53,52 @@ export class ArticleDetailsComponent implements OnInit {
   selector: 'dialog-elements-example-dialog',
   templateUrl: 'dialog-elements-example-dialog.html',
   standalone: true,
-  imports: [MatButtonModule],
+  imports: [
+    MatButtonModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+  ],
 })
-export class DialogElementsExampleDialog {
-  data: undefined | UpdateArticleDto;
-  productMessage: undefined | string;
+export class DialogElementsExampleDialog implements OnInit {
+  updateForm: FormGroup;
+  id: number;
 
   constructor(
     public dialog: MatDialog,
-    private formBuilder: FormBuilder,
     private readonly articleDetailsService: ServicesService,
-    private route: ActivatedRoute,
+    private fb: FormBuilder,
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.updateForm = this.fb.group({
+      title: '',
+      content: '',
+      category: '',
+      image: '',
+    });
+  }
 
-  update(id: string, dto: UpdateArticleDto): void {
-    this.articleDetailsService.updateArticle(id, dto).subscribe();
+  // updateModel(id: number, updateDto: ArticleInterface): void {
+  //   this.articleDetailsService.update(id, updateDto).subscribe(
+  //     (response) => {
+  //       console.log('Update successful', response);
+  //     },
+  //     (error) => {
+  //       console.error('Error updating', error);
+  //     },
+  //   );
+  // }
+  updateModel(): void {
+    const updateDto: ArticleInterface = this.updateForm.value;
+    this.articleDetailsService.update(this.id, updateDto).subscribe(
+      (response) => {
+        console.log('Update successful', response);
+      },
+      (error) => {
+        console.error('Error updating', error);
+      },
+    );
   }
 
   closeDialog() {

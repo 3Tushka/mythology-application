@@ -38,20 +38,40 @@ export class ArticlesService {
     return article;
   }
 
-  async updateArticle(id: number, dto: UpdateArticleDto): Promise<any> {
-    const article = await this.articleRepository.findByPk(id);
+  // async updateArticle(
+  //   id: number,
+  //   attrs: Partial<UpdateArticleDto>,
+  // ): Promise<UpdateArticleDto> {
+  //   const article = await this.articleRepository.findByPk(id);
 
-    if (!article) {
-      throw new NotFoundException();
+  //   if (!article) {
+  //     throw new NotFoundException();
+  //   }
+  //   article.title = attrs.title;
+  //   article.category = attrs.category;
+  //   article.content = attrs.content;
+  //   article.image = attrs.image;
+
+  //   await article.save();
+
+  //   return article.toJSON();
+  // }
+
+  async updateArticle(
+    id: number,
+    updateDTO: UpdateArticleDto,
+  ): Promise<Article> {
+    const record = await this.articleRepository.findOne({
+      where: { id },
+    });
+
+    if (!record) {
+      throw new NotFoundException(`Record with ID ${id} not found`);
     }
 
-    article.title = dto.title;
-    article.category = dto.category;
-    article.content = dto.content;
+    Object.assign(record, updateDTO);
 
-    await article.save();
-
-    return article.toJSON();
+    return await record.save();
   }
 
   async deleteArticle(id: number): Promise<void> {
