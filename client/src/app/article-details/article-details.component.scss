@@ -82,5 +82,29 @@
                 width: 50%;
             }
         }
+
+        &__form {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 40svw;
+
+            gap: 1.2rem;
+        }
+
+        &__form-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .close {
+                width: 20%;
+                cursor: pointer;
+
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
     }
 }

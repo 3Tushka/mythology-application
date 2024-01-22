@@ -1,6 +1,62 @@
 <app-navbar></app-navbar>
 
 <div class="article">
+  <div class="article__admin" *ngIf="">
+    <form [formGroup]="form" (submit)="submit()" class="article__form">
+      <mat-form-field>
+        <mat-label>Title</mat-label>
+        <input
+          type="text"
+          formControlName="title"
+          type="text"
+          class="form-control"
+          placeholder="Title"
+          matInput
+          required
+        />
+        <mat-error *ngIf="form.invalid">Title is required</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Category</mat-label>
+        <input
+          type="text"
+          formControlName="category"
+          type="text"
+          class="form-control"
+          placeholder="Category"
+          matInput
+          required
+        />
+        <mat-error *ngIf="form.invalid">Category is required</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Content</mat-label>
+        <textarea
+          type="text"
+          formControlName="content"
+          type="text"
+          class="form-control"
+          placeholder="Content"
+          matInput
+          required
+        ></textarea>
+        <mat-error *ngIf="form.invalid">Content is required</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Image</mat-label>
+        <input
+          type="text"
+          formControlName="image"
+          type="text"
+          class="form-control"
+          placeholder="Image"
+          matInput
+        />
+        <mat-error *ngIf="form.invalid">Image is required</mat-error>
+      </mat-form-field>
+    </form>
+  </div>
+
   <mat-card class="article-card" *ngFor="let article of articles$ | async">
     <div class="article__link" [routerLink]="['/articles', article.id]">
       <mat-card-header>

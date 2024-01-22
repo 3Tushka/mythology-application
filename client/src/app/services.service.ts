@@ -21,16 +21,6 @@ export class ServicesService {
     return this.httpClient.delete('http://localhost:1268/articles/' + id);
   }
 
-  // updateArticle(
-  //   id: string,
-  //   article: ArticleInterface,
-  // ): Observable<ArticleInterface> {
-  //   return this.httpClient.put<ArticleInterface>(
-  //     `http://localhost:1268/articles/${id}`,
-  //     article,
-  //   );
-  // }
-
   update(id: number, updateDTO: ArticleInterface): Observable<any> {
     const url = `http://localhost:1268/articles/${id}`;
     return this.httpClient.put(url, updateDTO);
