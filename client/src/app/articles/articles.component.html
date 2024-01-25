@@ -2,23 +2,40 @@
 
 <div class="article">
   <div class="article__wrapper">
-    <div class="open-form-box">
-      <mat-icon
-        class="open-form-box__add"
-        mat-raised-button
-        color="primary"
-        (click)="onAddButtonClick()"
-        *ngIf="!isAddButtonClicked"
+    <div class="search">
+      <form
+        [formGroup]="seartchForm"
+        class="search__form"
+        (ngSubmit)="onSearchSubmit()"
       >
-        add
-      </mat-icon>
-      <mat-icon
-        class="open-form-box__close"
-        mat-raised-button
-        (click)="onCloseButtonClick()"
-        *ngIf="isAddButtonClicked"
-        >close</mat-icon
-      >
+        <mat-form-field>
+          <mat-label>Search...</mat-label>
+          <input
+            type="text"
+            formControlName="searchValue"
+            class="form-control"
+            matInput
+          />
+        </mat-form-field>
+      </form>
+      <div class="open-form-box">
+        <mat-icon
+          class="open-form-box__add"
+          mat-raised-button
+          color="primary"
+          (click)="onAddButtonClick()"
+          *ngIf="!isAddButtonClicked"
+        >
+          add
+        </mat-icon>
+        <mat-icon
+          class="open-form-box__close"
+          mat-raised-button
+          (click)="onCloseButtonClick()"
+          *ngIf="isAddButtonClicked"
+          >close</mat-icon
+        >
+      </div>
     </div>
     <div class="article__admin" *ngIf="isAddButtonClicked">
       <form [formGroup]="form" (submit)="submit()" class="article__form">
@@ -85,7 +102,7 @@
     </div>
 
     <div class="article__content" *ngIf="!isAddButtonClicked">
-      <mat-card class="article-card" *ngFor="let article of articles$ | async">
+      <mat-card class="article-card" *ngFor="let article of searchedArticle">
         <div class="article__link" [routerLink]="['/articles', article.id]">
           <mat-card-header>
             <mat-card-title>{{ article.title }}</mat-card-title>

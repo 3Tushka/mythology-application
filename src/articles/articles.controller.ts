@@ -9,6 +9,7 @@ import {
   UploadedFile,
   UseGuards,
   UseInterceptors,
+  Query,
 } from '@nestjs/common';
 import { ArticlesService } from './articles.service';
 import { CreateArticleDto } from './dto/create-article.dto';
@@ -42,9 +43,14 @@ export class ArticlesController {
     return this.articleService.getArticleById(id);
   }
 
+  // @Get()
+  // getAll() {
+  //   return this.articleService.getAllArticles();
+  // }
+
   @Get()
-  getAll() {
-    return this.articleService.getAllArticles();
+  async filterArticles(@Query('title') query: string) {
+    return this.articleService.searchArticle(query);
   }
 
   @Put(':id')

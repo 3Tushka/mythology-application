@@ -1,14 +1,14 @@
 @import "../../assets/variables.scss";
 
 .article {
-    padding: 5rem 1.2rem 0;
+    padding: 2rem 1.2rem 0;
     background-color: $color-cream;
 
     display: flex;
     gap: 2rem;
 
     .article-card {
-        margin: 3rem 0;
+        margin: 1rem 0;
         max-width: 50svh;
         background: $background-black;
         font-family: "Barlow-Condensed";
@@ -19,6 +19,17 @@
             width: 100%;
             height: auto;
             object-fit: contain;
+        }
+    }
+
+    .search {
+        &__form {
+            display: flex;
+            justify-content: center;
+
+            mat-form-field {
+                width: 50%;
+            }
         }
     }
 
@@ -73,5 +84,10 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
+    }
+
+    &__content {
+        display: flex;
+        gap: 2rem;
     }
 }

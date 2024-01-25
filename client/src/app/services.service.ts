@@ -27,6 +27,12 @@ export class ServicesService {
     return this.httpClient.put(url, updateDTO);
   }
 
+  getSearchArticles(searchValue: string): Observable<ArticleInterface[]> {
+    return this.httpClient.get<ArticleInterface[]>(
+      `http://localhost:1268/articles?title=${searchValue}`,
+    );
+  }
+
   updateCalendar(
     id: number,
     updateDTO: CalendarDetailsInterface,

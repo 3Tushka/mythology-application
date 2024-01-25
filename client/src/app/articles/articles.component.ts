@@ -7,6 +7,8 @@ import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { CookieService } from 'ngx-cookie-service';
 
+import { ArticleInterface } from '../interfaces/article.interface';
+
 @Component({
   selector: 'app-articles',
   templateUrl: './articles.component.html',
@@ -20,6 +22,12 @@ export class ArticlesComponent {
 
   isAddButtonClicked = false;
 
+  searchValue = '';
+  searchedArticle: ArticleInterface[] = [];
+  seartchForm = this.fb.group({
+    searchValue: '',
+  });
+
   constructor(
     private articlesService: ServicesService,
     private fb: FormBuilder,
@@ -29,14 +37,14 @@ export class ArticlesComponent {
   ) {}
 
   ngOnInit(): void {
-    this.articles$ = this.articlesService.getArticles();
-
     this.form = this.fb.group({
       title: '',
       content: '',
       category: '',
       image: '',
     });
+
+    this.fetchSearchData();
   }
 
   submit(): void {
@@ -47,6 +55,22 @@ export class ArticlesComponent {
       .subscribe(() => {
         this.router.navigate(['/articles']);
       });
+
+    this.articlesService.getSearchArticles;
+  }
+
+  fetchSearchData(): void {
+    this.articlesService
+      .getSearchArticles(this.searchValue)
+      .subscribe((res) => {
+        this.searchedArticle = res;
+        this.seartchForm.reset();
+      });
+  }
+
+  onSearchSubmit(): void {
+    this.searchValue = this.seartchForm.value.searchValue ?? '';
+    this.fetchSearchData();
   }
 
   // set this shit in service or whatever

@@ -5,6 +5,7 @@ import { CreateArticleDto } from './dto/create-article.dto';
 import { FilesService } from 'src/files/files.service';
 import { Repository } from 'sequelize-typescript';
 import { UpdateArticleDto } from './dto/update-article.dto';
+import { Op } from 'sequelize';
 
 @Injectable()
 export class ArticlesService {
@@ -60,5 +61,15 @@ export class ArticlesService {
       where: { id },
     });
     console.log('Article was Deleted');
+  }
+
+  async searchArticle(query: string): Promise<Article[]> {
+    return this.articleRepository.findAll({
+      where: {
+        title: {
+          [Op.like]: `%${query}%`,
+        },
+      },
+    });
   }
 }
