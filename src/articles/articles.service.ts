@@ -38,25 +38,6 @@ export class ArticlesService {
     return article;
   }
 
-  // async updateArticle(
-  //   id: number,
-  //   attrs: Partial<UpdateArticleDto>,
-  // ): Promise<UpdateArticleDto> {
-  //   const article = await this.articleRepository.findByPk(id);
-
-  //   if (!article) {
-  //     throw new NotFoundException();
-  //   }
-  //   article.title = attrs.title;
-  //   article.category = attrs.category;
-  //   article.content = attrs.content;
-  //   article.image = attrs.image;
-
-  //   await article.save();
-
-  //   return article.toJSON();
-  // }
-
   async updateArticle(
     id: number,
     updateDTO: UpdateArticleDto,

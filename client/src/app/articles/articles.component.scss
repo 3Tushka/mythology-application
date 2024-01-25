@@ -30,4 +30,48 @@
         font-size: 1.1rem;
         margin-bottom: 6px;
     }
+
+    &__wrapper {
+        width: 100%;
+
+        .open-form-box {
+            display: flex;
+            justify-content: end;
+
+            &__add,
+            &__close {
+                background-color: aliceblue;
+                border-radius: 90px;
+
+                width: 2rem;
+                height: 2rem;
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                cursor: pointer;
+
+                transition: all 0.3s ease-in-out;
+            }
+
+            &__add:hover,
+            &__close:hover {
+                scale: 1.5;
+            }
+        }
+    }
+
+    &__admin {
+        display: flex;
+        justify-content: center;
+
+        margin: 2rem 0;
+    }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
 }

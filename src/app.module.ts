@@ -16,8 +16,10 @@ import { Calendar } from './calendar/schema/calendar.schema';
 import { SocketGateway } from './socket/socket.gateway';
 import { Message } from './socket/shema/message.schema';
 import { SocketModule } from './socket/socket.module';
+import { Comment } from './comments/schema/comments.schema';
 
 import { ServeStaticModule } from '@nestjs/serve-static';
+import { CommentsModule } from './comments/comments.module';
 import * as path from 'path';
 
 @Module({
@@ -35,7 +37,7 @@ import * as path from 'path';
       username: process.env.POSTGRES_USER,
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_DB,
-      models: [User, Role, UserRoles, Article, Calendar, Message],
+      models: [User, Role, UserRoles, Article, Calendar, Message, Comment],
       autoLoadModels: true,
       synchronize: true,
     }),
@@ -45,6 +47,7 @@ import * as path from 'path';
     ArticlesModule,
     CalendarModule,
     SocketModule,
+    CommentsModule,
   ],
   controllers: [AppController],
   providers: [AppService, SocketGateway],

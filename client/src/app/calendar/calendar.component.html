@@ -1,48 +1,113 @@
 <div class="calendar-wrapper">
   <app-navbar></app-navbar>
   <div class="wrapper">
-    <div class="calendar" *ngFor="let calendar of calendar$ | async">
-      <!-- ngSwitch not suitable -->
-      <div class="calendar__condition" *ngIf="calendar?.month == 'Січня'">
-        <!-- Рендер місяця лише один раз??? -->
-        {{ calendar.month }}
-        <mat-card
-          class="calendar__item"
-          [routerLink]="['/calendar', calendar.id]"
+    <div class="open-form-box">
+      <mat-icon
+        class="open-form-box__add"
+        mat-raised-button
+        color="primary"
+        (click)="onAddButtonClick()"
+        *ngIf="!isAddButtonClicked"
+      >
+        add
+      </mat-icon>
+      <mat-icon
+        class="open-form-box__close"
+        mat-raised-button
+        (click)="onCloseButtonClick()"
+        *ngIf="isAddButtonClicked"
+        >close</mat-icon
+      >
+    </div>
+    <div class="calendar__admin" *ngIf="isAddButtonClicked">
+      <form [formGroup]="form" (submit)="submit()" class="calendar__form">
+        <mat-form-field>
+          <mat-label>ID</mat-label>
+          <input
+            type="number"
+            formControlName="id"
+            class="form-control"
+            placeholder="ID"
+            matInput
+            required
+          />
+          <mat-error *ngIf="form.invalid">ID is required</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Day</mat-label>
+          <input
+            type="number"
+            formControlName="day"
+            class="form-control"
+            placeholder="Title"
+            matInput
+            required
+          />
+          <mat-error *ngIf="form.invalid">Title is required</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Month</mat-label>
+          <input
+            type="text"
+            formControlName="month"
+            class="form-control"
+            placeholder="Month"
+            matInput
+            required
+          />
+          <mat-error *ngIf="form.invalid">Month is required</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Content</mat-label>
+          <textarea
+            type="text"
+            formControlName="content"
+            class="form-control"
+            placeholder="Content"
+            matInput
+            required
+          ></textarea>
+          <mat-error *ngIf="form.invalid">Content is required</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Title</mat-label>
+          <input
+            type="text"
+            formControlName="title"
+            class="form-control"
+            placeholder="Title"
+            matInput
+          />
+          <mat-error *ngIf="form.invalid">Title is required</mat-error>
+        </mat-form-field>
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          [disabled]="form.invalid"
         >
-          <mat-card-header class="calendar__header">
-            <mat-card-title class="calendar__day">
-              <span>{{ calendar.day }}</span>
-            </mat-card-title>
-            <mat-card-subtitle class="calendar__month">
-              <span>{{ calendar.month }}</span>
-            </mat-card-subtitle>
-          </mat-card-header>
-          <mat-card-content class="calendar__title">
-            <span>{{ calendar.title }}</span>
-          </mat-card-content>
-        </mat-card>
-      </div>
-
-      <div class="calendar__condition" *ngIf="calendar?.month == 'Лютого'">
-        {{ calendar.month }}
-        <mat-card
-          class="calendar__item"
-          [routerLink]="['/calendar', calendar.id]"
-        >
-          <mat-card-header class="calendar__header">
-            <mat-card-title class="calendar__day">
-              <span>{{ calendar.day }}</span>
-            </mat-card-title>
-            <mat-card-subtitle class="calendar__month">
-              <span>{{ calendar.month }}</span>
-            </mat-card-subtitle>
-          </mat-card-header>
-          <mat-card-content class="calendar__title">
-            <span>{{ calendar.title }}</span>
-          </mat-card-content>
-        </mat-card>
-      </div>
+          Submit
+        </button>
+      </form>
+    </div>
+    <div class="calendar" *ngIf="!isAddButtonClicked">
+      <mat-card
+        *ngFor="let calendar of calendar$ | async"
+        class="calendar__item"
+        [routerLink]="['/calendar', calendar.id]"
+      >
+        <div class="calendar__header">
+          <div class="calendar__header__day">
+            <span>{{ calendar.day }}</span>
+          </div>
+          <div class="calendar__header__month">
+            <span>{{ calendar.month }}</span>
+          </div>
+        </div>
+        <mat-card-content class="calendar__title">
+          <span>{{ calendar.title }}</span>
+        </mat-card-content>
+      </mat-card>
     </div>
   </div>
   <app-footer></app-footer>

@@ -10,6 +10,7 @@ import {
 import { Role } from 'src/roles/schemas/roles.schema';
 import { UserRoles } from 'src/roles/schemas/user-roles.schema';
 import { Message } from 'src/socket/shema/message.schema';
+import { Comment } from 'src/comments/schema/comments.schema';
 
 interface UserAttributes {
   email: string;
@@ -52,4 +53,7 @@ export class User extends Model<User, UserAttributes> {
 
   @HasMany(() => Message)
   messages: Message[];
+
+  @HasMany(() => Comment)
+  comments: Comment[];
 }

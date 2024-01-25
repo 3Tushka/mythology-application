@@ -7,6 +7,7 @@ import {
 import { Calendar } from './schema/calendar.schema';
 import { InjectModel } from '@nestjs/sequelize';
 import { CreateCalendarDto } from './dto/calendar.dto';
+import { UpdateArticleDto } from 'src/articles/dto/update-article.dto';
 
 @Injectable()
 export class CalendarService {
@@ -35,6 +36,20 @@ export class CalendarService {
       include: { all: true },
     });
     return calendarItem;
+  }
+
+  async updateCalendarItem(id: number, updateDTO: UpdateArticleDto) {
+    const record = await this.calendarRepository.findOne({
+      where: { id },
+    });
+
+    if (!record) {
+      throw new NotFoundException(`Record with ID ${id} not found`);
+    }
+
+    Object.assign(record, updateDTO);
+
+    return await record.save();
   }
 
   async deleteCalendarItem(id: number): Promise<void> {

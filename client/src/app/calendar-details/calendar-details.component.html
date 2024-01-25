@@ -1,13 +1,101 @@
-<div class="calendar-wrapper">
-
+<div class="calendar-details">
+  <div class="calendar-details__wrapper">
     <app-navbar></app-navbar>
-    <div class="calendar-detail" *ngIf="calendarData">
-        {{calendarData.day}}
-
-        {{calendarData.month}}
-
-        {{calendarData.title}}
-
-        {{calendarData.content}}
+    <div class="calendar-details__box" *ngIf="!isAddButtonClicked">
+      <div class="calendar-details__info" *ngIf="calendarData">
+        <article class="calendar-details__main-title">
+          <div class="calendar-details__day">
+            {{ calendarData.day }}
+          </div>
+          <div class="calendar-details__month">
+            {{ calendarData.month }}
+          </div>
+          <div class="calendar-details__title">
+            {{ calendarData.title }}
+          </div>
+        </article>
+        <article class="calendar-details__description">
+          <span> {{ calendarData.content }}</span>
+        </article>
+      </div>
     </div>
+
+    <div class="calendar-details__controll">
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="onAddButtonClick()"
+        *ngIf="!isAddButtonClicked"
+      >
+        Update
+      </button>
+      <button
+        mat-raised-button
+        color="warn"
+        type="submit"
+        *ngIf="!isAddButtonClicked"
+      >
+        Delete
+      </button>
+      <div class="calendar-details__form-box" *ngIf="isAddButtonClicked">
+        <form
+          [formGroup]="updateForm"
+          class="calendar-details__form"
+          (ngSubmit)="updateModel()"
+        >
+          <div class="calendar-details__form-title">
+            <h2>Update article</h2>
+            <mat-icon
+              class="close"
+              mat-icon-button
+              (click)="onCloseButtonClick()"
+              *ngIf="isAddButtonClicked"
+            >
+              <mat-icon>close</mat-icon>
+            </mat-icon>
+          </div>
+          <mat-form-field>
+            <mat-label>Title</mat-label>
+            <input
+              type="text"
+              formControlName="title"
+              class="form-control"
+              placeholder="Title"
+              matInput
+              required
+            />
+            <mat-error *ngIf="updateForm.invalid">Title is required</mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Content</mat-label>
+            <textarea
+              type="text"
+              formControlName="content"
+              class="form-control"
+              placeholder="Content"
+              matInput
+              cols="35"
+              rows="8"
+              required
+            ></textarea>
+            <mat-error *ngIf="updateForm.invalid"
+              >Content is required</mat-error
+            >
+          </mat-form-field>
+
+          <button
+            class="calendar-details__submit"
+            mat-raised-button
+            color="primary"
+            type="submit"
+            [disabled]="updateForm.invalid"
+          >
+            Submit
+          </button>
+        </form>
+      </div>
+    </div>
+    <app-footer></app-footer>
+  </div>
 </div>

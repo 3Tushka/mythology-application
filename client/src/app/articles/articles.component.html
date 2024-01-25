@@ -1,77 +1,107 @@
 <app-navbar></app-navbar>
 
 <div class="article">
-  <div class="article__admin" *ngIf="">
-    <form [formGroup]="form" (submit)="submit()" class="article__form">
-      <mat-form-field>
-        <mat-label>Title</mat-label>
-        <input
-          type="text"
-          formControlName="title"
-          type="text"
-          class="form-control"
-          placeholder="Title"
-          matInput
-          required
-        />
-        <mat-error *ngIf="form.invalid">Title is required</mat-error>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Category</mat-label>
-        <input
-          type="text"
-          formControlName="category"
-          type="text"
-          class="form-control"
-          placeholder="Category"
-          matInput
-          required
-        />
-        <mat-error *ngIf="form.invalid">Category is required</mat-error>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Content</mat-label>
-        <textarea
-          type="text"
-          formControlName="content"
-          type="text"
-          class="form-control"
-          placeholder="Content"
-          matInput
-          required
-        ></textarea>
-        <mat-error *ngIf="form.invalid">Content is required</mat-error>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Image</mat-label>
-        <input
-          type="text"
-          formControlName="image"
-          type="text"
-          class="form-control"
-          placeholder="Image"
-          matInput
-        />
-        <mat-error *ngIf="form.invalid">Image is required</mat-error>
-      </mat-form-field>
-    </form>
-  </div>
-
-  <mat-card class="article-card" *ngFor="let article of articles$ | async">
-    <div class="article__link" [routerLink]="['/articles', article.id]">
-      <mat-card-header>
-        <mat-card-title>{{ article.title }}</mat-card-title>
-        <mat-card-subtitle>{{ article.category }}</mat-card-subtitle>
-      </mat-card-header>
-      <mat-card-content>
-        <img
-          mat-card-image
-          src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-          alt="card-image"
-        />
-      </mat-card-content>
+  <div class="article__wrapper">
+    <div class="open-form-box">
+      <mat-icon
+        class="open-form-box__add"
+        mat-raised-button
+        color="primary"
+        (click)="onAddButtonClick()"
+        *ngIf="!isAddButtonClicked"
+      >
+        add
+      </mat-icon>
+      <mat-icon
+        class="open-form-box__close"
+        mat-raised-button
+        (click)="onCloseButtonClick()"
+        *ngIf="isAddButtonClicked"
+        >close</mat-icon
+      >
     </div>
-  </mat-card>
+    <div class="article__admin" *ngIf="isAddButtonClicked">
+      <form [formGroup]="form" (submit)="submit()" class="article__form">
+        <mat-form-field>
+          <mat-label>Title</mat-label>
+          <input
+            type="text"
+            formControlName="title"
+            type="text"
+            class="form-control"
+            placeholder="Title"
+            matInput
+            required
+          />
+          <mat-error *ngIf="form.invalid">Title is required</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Category</mat-label>
+          <input
+            type="text"
+            formControlName="category"
+            type="text"
+            class="form-control"
+            placeholder="Category"
+            matInput
+            required
+          />
+          <mat-error *ngIf="form.invalid">Category is required</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Content</mat-label>
+          <textarea
+            type="text"
+            formControlName="content"
+            type="text"
+            class="form-control"
+            placeholder="Content"
+            matInput
+            required
+          ></textarea>
+          <mat-error *ngIf="form.invalid">Content is required</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Image</mat-label>
+          <input
+            type="text"
+            formControlName="image"
+            type="text"
+            class="form-control"
+            placeholder="Image"
+            matInput
+          />
+          <mat-error *ngIf="form.invalid">Image is required</mat-error>
+        </mat-form-field>
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          [disabled]="form.invalid"
+        >
+          Submit
+        </button>
+      </form>
+    </div>
+
+    <div class="article__content" *ngIf="!isAddButtonClicked">
+      <mat-card class="article-card" *ngFor="let article of articles$ | async">
+        <div class="article__link" [routerLink]="['/articles', article.id]">
+          <mat-card-header>
+            <mat-card-title>{{ article.title }}</mat-card-title>
+            <mat-card-subtitle>{{ article.category }}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <img
+              mat-card-image
+              src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+              alt="card-image"
+            />
+          </mat-card-content>
+        </div>
+      </mat-card>
+    </div>
+  </div>
 </div>
 
 <app-footer></app-footer>

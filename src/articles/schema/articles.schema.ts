@@ -1,3 +1,4 @@
+import { HasMany } from 'sequelize-typescript';
 import {
   BelongsTo,
   Column,
@@ -7,6 +8,7 @@ import {
   Model,
 } from 'sequelize-typescript';
 import { User } from 'src/users/user.schema';
+import { Comment } from '../../comments/schema/comments.schema';
 
 interface ArticlesCreationAttributes {
   userId: number;
@@ -44,4 +46,7 @@ export class Article extends Model<Article, ArticlesCreationAttributes> {
 
   @BelongsTo(() => User)
   author: User;
+
+  @HasMany(() => Comment)
+  comments: Comment[];
 }
