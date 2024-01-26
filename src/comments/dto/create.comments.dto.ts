@@ -10,5 +10,5 @@ export class CreateCommentDto {
   userId: number;
 
   @IsNotEmpty()
-  content: string;
+  text: string;
 }

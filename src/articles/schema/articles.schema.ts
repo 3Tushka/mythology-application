@@ -8,7 +8,7 @@ import {
   Model,
 } from 'sequelize-typescript';
 import { User } from 'src/users/user.schema';
-import { Comment } from '../../comments/schema/comments.schema';
+import { Comment } from 'src/comments/schema/comments.schema';
 
 interface ArticlesCreationAttributes {
   userId: number;

@@ -16,10 +16,9 @@ import { Calendar } from './calendar/schema/calendar.schema';
 import { SocketGateway } from './socket/socket.gateway';
 import { Message } from './socket/shema/message.schema';
 import { SocketModule } from './socket/socket.module';
-import { Comment } from './comments/schema/comments.schema';
-
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { CommentsModule } from './comments/comments.module';
+import { Comment } from './comments/schema/comments.schema';
 import * as path from 'path';
 
 @Module({

@@ -1,22 +1,16 @@
 import {
-  BelongsTo,
+  Table,
   Column,
+  Model,
   DataType,
   ForeignKey,
-  Table,
-  Model,
+  BelongsTo,
 } from 'sequelize-typescript';
-import { Article } from '../../articles/schema/articles.schema';
+import { Article } from 'src/articles/schema/articles.schema';
 import { User } from 'src/users/user.schema';
 
-interface CommentsCreationAttributes {
-  articleId: number;
-  userId: number;
-  content: string;
-}
-
 @Table({ tableName: 'comments' })
-export class Comment extends Model<Comment, CommentsCreationAttributes> {
+export class Comment extends Model {
   @Column({
     type: DataType.INTEGER,
     unique: true,
@@ -25,26 +19,20 @@ export class Comment extends Model<Comment, CommentsCreationAttributes> {
   })
   id: number;
 
-  @ForeignKey(() => Article)
-  @Column({
-    type: DataType.INTEGER,
-    allowNull: false,
-  })
-  articleId: number;
-
-  @BelongsTo(() => Article)
-  article: Article;
+  @Column({ type: DataType.STRING(1000), allowNull: false })
+  text: string;
 
   @ForeignKey(() => User)
   @Column({ type: DataType.INTEGER })
   userId: number;
 
   @BelongsTo(() => User)
-  author: User;
+  user: User;
 
-  @Column({
-    type: DataType.TEXT,
-    allowNull: false,
-  })
-  content: string;
+  @ForeignKey(() => Article)
+  @Column({ type: DataType.INTEGER })
+  articleId: number;
+
+  @BelongsTo(() => Article)
+  article: Article;
 }

@@ -18,13 +18,14 @@ import { Roles } from 'src/auth/decorator/roles-auth.decorator';
 import { RolesGuard } from 'src/auth/guards/roles.guard';
 import { UpdateArticleDto } from './dto/update-article.dto';
 import { CommentsService } from 'src/comments/comments.service';
-import { CreateCommentDto } from 'src/comments/dto/createComment.dto';
+import { CreateCommentDto } from 'src/comments/dto/create.comments.dto';
+import { UpdateCommentDto } from 'src/comments/dto/update.comments.dto';
 
 @Controller('articles')
 export class ArticlesController {
   constructor(
     private articleService: ArticlesService,
-    private commentsService: CommentsService,
+    private commentService: CommentsService,
   ) {}
 
   // @Roles('admin')
@@ -65,14 +66,29 @@ export class ArticlesController {
     return this.articleService.deleteArticle(+id);
   }
 
-  // COMMENTS CONTROLLS
-  // @Post(':id/comments')
-  // createComment(@Param('id') @Body() id: string, dto: CreateCommentDto) {
-  //   return this.commentsService.createComment(id, dto);
-  // }
+  @Post(':id/comments')
+  async createComment(@Param('id') id: string, @Body() dto: CreateCommentDto) {
+    return this.commentService.createComment(id, dto);
+  }
 
-  @Get(':id/comments')
-  getComments(@Param('id') id: string) {
-    return this.commentsService.getCommentById(id);
+  @Put(':id/comments/:commentId')
+  async updateComment(
+    @Param('id')
+    id: string,
+    @Param('commentId')
+    commentId: string,
+    @Body() dto: UpdateCommentDto,
+  ) {
+    return this.commentService.updateComment(id, commentId, dto);
+  }
+
+  @Delete(':id/comments/:commentId')
+  async deleteComment(
+    @Param('id')
+    id: string,
+    @Param('commentId')
+    commentId: string,
+  ) {
+    return this.commentService.deleteComment(id, commentId);
   }
 }
