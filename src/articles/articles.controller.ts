@@ -66,6 +66,12 @@ export class ArticlesController {
     return this.articleService.deleteArticle(+id);
   }
 
+  //comments
+  @Get(':id/comments')
+  async getCommentsByArticleId(@Param('id') id: string) {
+    return this.commentService.getCommentsByArticleId(id);
+  }
+
   @Post(':id/comments')
   async createComment(@Param('id') id: string, @Body() dto: CreateCommentDto) {
     return this.commentService.createComment(id, dto);

@@ -106,5 +106,13 @@
                 justify-content: center;
             }
         }
+
+        &__comments {
+            display: flex;
+            width: 40svw;
+            justify-content: center;
+            align-self: center;
+            background: aliceblue;
+        }
     }
 }

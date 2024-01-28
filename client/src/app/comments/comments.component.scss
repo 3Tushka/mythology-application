@@ -1,0 +1,67 @@
+@import "../../assets/variables.scss";
+
+.article-comments {
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+
+    padding: 2rem 17svw;
+
+    background: url("../../assets/backgrounds/kiwihug-3gifzboyZk0-unsplash.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    &__display-comments {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 1rem;
+
+        margin: 2rem 0;
+    }
+
+    &__item {
+        background-color: rgba(240, 248, 255, 0.8);
+        padding: 12px;
+        border-radius: 2px;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    &__author {
+        font-size: 1.2rem;
+        color: $font-color;
+    }
+
+    &__time {
+        color: rgb(114, 114, 255);
+        font-size: 0.8rem;
+        margin: 8px 0 15px;
+    }
+
+    &__text {
+        margin: 0 5px;
+
+        font-size: 1.3rem;
+        color: $font-color;
+        font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana,
+            sans-serif;
+    }
+
+    &__comments-form {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+
+        .form-textarea {
+            width: 100%;
+        }
+    }
+
+    &__comments-submit-button {
+        width: fit-content;
+    }
+}

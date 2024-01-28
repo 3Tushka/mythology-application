@@ -10,6 +10,12 @@ export class CommentsService {
     @InjectModel(Comment) private commentRepository: typeof Comment,
   ) {}
 
+  async getCommentsByArticleId(id: string) {
+    return this.commentRepository.findAll({
+      where: { articleId: id },
+    });
+  }
+
   async createComment(id: string, dto: CreateCommentDto) {
     const comment = await this.commentRepository.create({
       text: dto.text,

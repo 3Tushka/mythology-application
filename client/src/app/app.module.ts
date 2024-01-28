@@ -27,6 +27,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { MatDialogModule } from '@angular/material/dialog';
+import { CommentsComponent } from './comments/comments.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     FooterComponent,
     AuthFormLoginComponent,
     AuthFormRegisterComponent,
+    CommentsComponent,
   ],
   imports: [
     BrowserModule,

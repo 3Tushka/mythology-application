@@ -53,7 +53,22 @@ export class ServicesService {
     return this.httpClient.get('http://localhost:1268/calendar/' + id);
   }
 
-  getCommentById(id: string): Observable<any> {
-    return this.httpClient.get('http://localhost:1268/articles/' + id);
+  // getCommentsByArticleId(id: string): Observable<any> {
+  //   return this.httpClient.get('http://localhost:1268/articles/' + id);
+  // }
+
+  updateComment(
+    id: string,
+    commentId: string,
+    updateDTO: CalendarDetailsInterface,
+  ): Observable<any> {
+    const url = `http://localhost:1268/article/${id}/comments/${id}`;
+    return this.httpClient.put(url, updateDTO);
+  }
+
+  deleteComment(id: string, commentId: string): void {
+    this.httpClient.delete(
+      `http://localhost:1268/articles/${id}/comments/${commentId}`,
+    );
   }
 }

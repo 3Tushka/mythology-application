@@ -1,3 +1,12 @@
+export interface CommentInterface {
+  readonly text: string;
+  readonly userId: number;
+  readonly articleId: number;
+
+  readonly createdAt?: Date;
+  readonly updatedAt?: Date;
+}
+
 export interface ArticleDetailsInterface {
   readonly id: string;
   readonly title: string;
@@ -5,4 +14,6 @@ export interface ArticleDetailsInterface {
   readonly userId: number;
   readonly category: string;
   readonly image: string;
+
+  readonly comments: CommentInterface[];
 }

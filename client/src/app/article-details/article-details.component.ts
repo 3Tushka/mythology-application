@@ -36,8 +36,6 @@ export class ArticleDetailsComponent implements OnInit {
             this.data = articleData;
             console.log(this.data);
           });
-
-        this.articleDetailsService.getCommentById(this.id).subscribe();
       }
 
       this.updateForm = this.fb.group({

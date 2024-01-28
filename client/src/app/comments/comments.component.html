@@ -1,0 +1,50 @@
+<app-navbar></app-navbar>
+<div class="article-comments">
+  <div class="article-comments__display-comments">
+    <div class="article-comments__item" *ngFor="let comment of data?.comments">
+      <div class="article-comments__author">
+        {{ comment.userId }}
+      </div>
+      <div class="article-comments__time">
+        {{ comment.createdAt | date: "MMM dd, yyyy 'at' hh:mm a" }}
+      </div>
+
+      <div class="article-comments__text">
+        {{ comment.text }}
+      </div>
+    </div>
+  </div>
+  <div class="article-comments__comments-box">
+    <form
+      class="article-comments__comments-form"
+      [formGroup]="postComment"
+      (ngSubmit)="submitPostComment()"
+    >
+      <mat-form-field class="form-textarea">
+        <mat-label>Comment</mat-label>
+        <textarea
+          type="text"
+          formControlName="text"
+          class="form-control"
+          placeholder="Comment"
+          matInput
+          class="article-comments__comments-input-textarea"
+          cdkTextareaAutosize
+          cdkAutosizeMinRows="1"
+          cdkAutosizeMaxRows="5"
+        ></textarea>
+        <mat-error *ngIf="postComment.invalid">Comment is required</mat-error>
+      </mat-form-field>
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        [disabled]="postComment.invalid"
+        class="article-comments__comments-submit-button"
+      >
+        Submit
+      </button>
+    </form>
+  </div>
+</div>
+<app-footer></app-footer>
