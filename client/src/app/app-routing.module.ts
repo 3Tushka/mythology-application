@@ -8,6 +8,8 @@ import { CalendarDetailsComponent } from './calendar-details/calendar-details.co
 import { AuthFormLoginComponent } from './auth-form-login/auth-form-login.component';
 import { AuthFormRegisterComponent } from './auth-form-register/auth-form-register.component';
 import { CommentsComponent } from './comments/comments.component';
+import { ConfirmDeleteComponent } from './comments/confirm-delete/confirm-delete.component';
+import { UpdateCommentComponent } from './comments/update-comment/update-comment.component';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent },
@@ -18,6 +20,14 @@ const routes: Routes = [
   { path: 'auth/login', component: AuthFormLoginComponent },
   { path: 'auth/registration', component: AuthFormRegisterComponent },
   { path: 'articles/:id/comments', component: CommentsComponent },
+  {
+    path: 'articles/:id/comments/:commentId',
+    component: ConfirmDeleteComponent,
+  },
+  {
+    path: 'articles/:id/comments/:commentId/update',
+    component: UpdateCommentComponent,
+  },
 ];
 
 @NgModule({

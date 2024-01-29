@@ -1,7 +1,11 @@
 @import "../../assets/variables.scss";
 
 .article-wrapper {
-    background-color: $color-cream;
+    background: url("../../assets/backgrounds/kiwihug-3gifzboyZk0-unsplash2.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
     width: 100%;
     color: $background-black;
 

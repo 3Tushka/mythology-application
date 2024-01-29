@@ -1,0 +1,41 @@
+<div class="update-comment-wrapper">
+  <div class="update-comment">
+    <div class="update-comment__header">
+      <h1 class="update-comment__header-title">Update Comment</h1>
+    </div>
+    <div class="update-comment__form-box">
+      <form
+        [formGroup]="commentUpdateForm"
+        (ngSubmit)="updateComment()"
+        class="update-comment__form"
+      >
+        <mat-form-field class="form-textarea">
+          <mat-label>Comment</mat-label>
+          <textarea
+            type="text"
+            formControlName="text"
+            class="form-control"
+            placeholder="Comment"
+            matInput
+            class="update-comment__input-textarea"
+            cdkTextareaAutosize
+            cdkAutosizeMinRows="1"
+            cdkAutosizeMaxRows="10"
+          ></textarea>
+          <mat-error *ngIf="commentUpdateForm.invalid"
+            >Comment is required</mat-error
+          >
+        </mat-form-field>
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          [disabled]="commentUpdateForm.invalid"
+          class="update-comment__submit-button"
+        >
+          Submit
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

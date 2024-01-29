@@ -7,6 +7,17 @@
       </div>
       <div class="article-comments__time">
         {{ comment.createdAt | date: "MMM dd, yyyy 'at' hh:mm a" }}
+        <mat-icon
+          color="primary"
+          type="submit"
+          [routerLink]="[comment.id, 'update']"
+        >
+          comment
+        </mat-icon>
+
+        <mat-icon color="primary" type="submit" [routerLink]="[comment.id]">
+          delete
+        </mat-icon>
       </div>
 
       <div class="article-comments__text">

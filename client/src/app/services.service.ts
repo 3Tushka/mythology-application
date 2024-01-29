@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 import { ArticleInterface } from './interfaces/article.interface';
 import { CalendarDetailsInterface } from './calendar-details/calendar-details.interface';
+import { CommentInterface } from './article-details/article-details.interface';
+import { UpdateCommentInterface } from './interfaces/updateComment.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -53,22 +55,22 @@ export class ServicesService {
     return this.httpClient.get('http://localhost:1268/calendar/' + id);
   }
 
-  // getCommentsByArticleId(id: string): Observable<any> {
-  //   return this.httpClient.get('http://localhost:1268/articles/' + id);
-  // }
+  getCommentsByArticleId(id: string): Observable<any> {
+    return this.httpClient.get('http://localhost:1268/articles/' + id);
+  }
 
   updateComment(
     id: string,
     commentId: string,
-    updateDTO: CalendarDetailsInterface,
+    updateDTO: UpdateCommentInterface,
   ): Observable<any> {
-    const url = `http://localhost:1268/article/${id}/comments/${id}`;
+    const url = `http://localhost:1268/articles/${id}/comments/${commentId}/update`;
     return this.httpClient.put(url, updateDTO);
   }
 
-  deleteComment(id: string, commentId: string): void {
-    this.httpClient.delete(
-      `http://localhost:1268/articles/${id}/comments/${commentId}`,
+  deleteComment(id: string, commentId: string): Observable<any> {
+    return this.httpClient.delete(
+      `http://localhost:1268/articles/${id}/comments/${commentId}/update`,
     );
   }
 }

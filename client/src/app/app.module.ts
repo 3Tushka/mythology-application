@@ -28,6 +28,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { MatDialogModule } from '@angular/material/dialog';
 import { CommentsComponent } from './comments/comments.component';
+import { ConfirmDeleteComponent } from './comments/confirm-delete/confirm-delete.component';
+import { UpdateCommentComponent } from './comments/update-comment/update-comment.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +44,8 @@ import { CommentsComponent } from './comments/comments.component';
     AuthFormLoginComponent,
     AuthFormRegisterComponent,
     CommentsComponent,
+    ConfirmDeleteComponent,
+    UpdateCommentComponent,
   ],
   imports: [
     BrowserModule,

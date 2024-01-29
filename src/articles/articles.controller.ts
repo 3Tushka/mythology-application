@@ -77,7 +77,7 @@ export class ArticlesController {
     return this.commentService.createComment(id, dto);
   }
 
-  @Put(':id/comments/:commentId')
+  @Put(':id/comments/:commentId/update')
   async updateComment(
     @Param('id')
     id: string,

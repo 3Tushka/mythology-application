@@ -1,4 +1,5 @@
 export interface CommentInterface {
+  readonly id: string;
   readonly text: string;
   readonly userId: number;
   readonly articleId: number;
