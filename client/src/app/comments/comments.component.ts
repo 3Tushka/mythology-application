@@ -6,6 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ServicesService } from '../services.service';
 import { HttpClient } from '@angular/common/http';
 import { UpdateCommentInterface } from './interface/updateComment.interface';
+import { getRoleFromLocalStorage } from '../functions/getRoleFromLocalStorage';
 
 @Component({
   selector: 'app-comments',
@@ -15,9 +16,12 @@ import { UpdateCommentInterface } from './interface/updateComment.interface';
 export class CommentsComponent implements OnInit {
   id: string | undefined | null;
   commentId: string | undefined | null;
+  userId: string | undefined | null;
   data: undefined | ArticleDetailsInterface;
 
   postComment: FormGroup;
+
+  isAdmin = false;
 
   constructor(
     private readonly commentService: ServicesService,
@@ -32,6 +36,8 @@ export class CommentsComponent implements OnInit {
       this.id = params.get('id');
 
       if (this.id) {
+        getRoleFromLocalStorage.call(this);
+
         this.commentService
           .getArticleDetails(this.id)
           .subscribe((articleData) => {
@@ -70,7 +76,15 @@ export class CommentsComponent implements OnInit {
       );
   }
 
-  deleteComment(id: string, commentId: string): void {
-    this.commentService.deleteComment(id, commentId);
+  canDeleteComment(commentUserId: string): boolean {
+    return this.userId === commentUserId;
+  }
+
+  deleteComment(id: string, commentId: string, commentUserId: string): void {
+    if (this.canDeleteComment(commentUserId)) {
+      this.commentService.deleteComment(id, commentId);
+    } else {
+      console.error('User cannot delete this comment');
+    }
   }
 }

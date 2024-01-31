@@ -6,7 +6,7 @@
     <div class="update-comment__form-box">
       <form
         [formGroup]="commentUpdateForm"
-        (ngSubmit)="updateComment()"
+        (ngSubmit)="updateComment(commentUserId)"
         class="update-comment__form"
       >
         <mat-form-field class="form-textarea">

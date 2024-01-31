@@ -29,6 +29,9 @@ export class AuthFormLoginComponent implements OnInit {
       .post('http://localhost:1268/auth/login', this.form.getRawValue(), {
         withCredentials: true,
       })
-      .subscribe(() => this.router.navigate(['/']));
+      .subscribe((response: any) => {
+        localStorage.setItem('token', response.token);
+        this.router.navigate(['/']);
+      });
   }
 }

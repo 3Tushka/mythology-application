@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 import { ArticleInterface } from './interfaces/article.interface';
@@ -30,8 +30,11 @@ export class ServicesService {
   }
 
   getSearchArticles(searchValue: string): Observable<ArticleInterface[]> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + token);
     return this.httpClient.get<ArticleInterface[]>(
       `http://localhost:1268/articles?title=${searchValue}`,
+      { headers: headers },
     );
   }
 

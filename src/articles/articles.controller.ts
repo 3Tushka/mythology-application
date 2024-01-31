@@ -54,13 +54,15 @@ export class ArticlesController {
     return this.articleService.searchArticle(query);
   }
 
+  @Roles('admin')
+  @UseGuards(RolesGuard)
   @Put(':id')
   updateArticle(@Param('id') id: number, @Body() updateDTO: UpdateArticleDto) {
     return this.articleService.updateArticle(id, updateDTO);
   }
 
-  // @Roles('admin')
-  // @UseGuards(RolesGuard)
+  @Roles('admin')
+  @UseGuards(RolesGuard)
   @Delete(':id')
   deleteArticle(@Param('id') id: number) {
     return this.articleService.deleteArticle(+id);

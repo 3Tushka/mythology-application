@@ -19,8 +19,8 @@ export class CalendarController {
   constructor(private calendarService: CalendarService) {}
 
   @Post()
-  // @Roles('admin')
-  // @UseGuards(RolesGuard)
+  @Roles('admin')
+  @UseGuards(RolesGuard)
   createCalendarItem(@Body() dto: CreateCalendarDto) {
     return this.calendarService.createCalendarItem(dto);
   }
@@ -38,6 +38,8 @@ export class CalendarController {
     return this.calendarService.getCalendarItemsAll();
   }
 
+  @Roles('admin')
+  @UseGuards(RolesGuard)
   @Put(':id')
   updateCalendarItem(
     @Param('id') id: number,

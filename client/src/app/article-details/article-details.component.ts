@@ -5,6 +5,7 @@ import { ServicesService } from '../services.service';
 
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ArticleInterface } from '../interfaces/article.interface';
+import { getRoleFromLocalStorage } from '../functions/getRoleFromLocalStorage';
 
 @Component({
   selector: 'app-article-details',
@@ -18,6 +19,8 @@ export class ArticleDetailsComponent implements OnInit {
 
   showForm = false;
 
+  isAdmin = false;
+
   constructor(
     private route: ActivatedRoute,
     private readonly articleDetailsService: ServicesService,
@@ -30,6 +33,8 @@ export class ArticleDetailsComponent implements OnInit {
       this.id = params.get('id');
 
       if (this.id) {
+        getRoleFromLocalStorage.call(this);
+
         this.articleDetailsService
           .getArticleDetails(this.id)
           .subscribe((articleData) => {

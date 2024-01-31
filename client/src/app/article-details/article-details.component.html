@@ -35,7 +35,7 @@
       <button mat-raised-button color="primary" [routerLink]="['comments']">
         Go to Comments
       </button>
-      <div class="article-detail__controll">
+      <div class="article-detail__controll" *ngIf="isAdmin == true">
         <button
           mat-raised-button
           color="primary"
