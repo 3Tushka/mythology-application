@@ -28,8 +28,8 @@ export class ArticlesController {
     private commentService: CommentsService,
   ) {}
 
-  // @Roles('admin')
-  // @UseGuards(RolesGuard)
+  @Roles('admin')
+  @UseGuards(RolesGuard)
   @Post()
   @UseInterceptors(FileInterceptor('image'))
   createArticle(@Body() dto: CreateArticleDto, @UploadedFile() image) {

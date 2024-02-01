@@ -38,6 +38,10 @@ export class ServicesService {
     );
   }
 
+  createCalendarItem(calendarItem: CalendarDetailsInterface): Observable<any> {
+    return this.httpClient.post('http://localhost:1268/calendar', calendarItem);
+  }
+
   updateCalendar(
     id: number,
     updateDTO: CalendarDetailsInterface,
@@ -73,7 +77,7 @@ export class ServicesService {
 
   deleteComment(id: string, commentId: string): Observable<any> {
     return this.httpClient.delete(
-      `http://localhost:1268/articles/${id}/comments/${commentId}/update`,
+      `http://localhost:1268/articles/${id}/comments/${commentId}`,
     );
   }
 }

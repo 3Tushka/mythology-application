@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ServicesService } from '../../services.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { UpdateCommentInterface } from './update-comment.interface';
-
+import { UpdateCommentInterface } from '../interface/updateComment.interface';
 @Component({
   selector: 'app-update-comment',
   templateUrl: './update-comment.component.html',

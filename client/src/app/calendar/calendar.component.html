@@ -20,7 +20,11 @@
       >
     </div>
     <div class="calendar__admin" *ngIf="isAddButtonClicked">
-      <form [formGroup]="form" (submit)="submit()" class="calendar__form">
+      <form
+        [formGroup]="form"
+        (submit)="submit()"
+        class="calendar__admin__form"
+      >
         <mat-form-field>
           <mat-label>ID</mat-label>
           <input

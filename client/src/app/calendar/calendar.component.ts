@@ -4,7 +4,6 @@ import { ServicesService } from '../services.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -25,7 +24,6 @@ export class CalendarComponent {
     private fb: FormBuilder,
     private http: HttpClient,
     private router: Router,
-    private cookieService: CookieService,
   ) {}
 
   ngOnInit(): void {
@@ -41,22 +39,21 @@ export class CalendarComponent {
   }
 
   submit(): void {
-    this.http
-      .post('http://localhost:1268/calendar', this.form.getRawValue(), {
-        withCredentials: true,
-      })
-      .subscribe(() => {
-        this.router.navigate(['/calendar']);
-      });
-  }
+    const token = localStorage.getItem('token');
+    console.log(token);
+    if (token) {
+      const base64Url = token.split('.')[1]; // Get payload part of the JWT token
+      const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/'); // Convert Base64Url to Base64
+      const payload = JSON.parse(window.atob(base64)); // Decode Base64 and parse JSON
 
-  // set this shit in service or whatever
-  isAdmin(): boolean {
-    const token = this.cookieService.get('token');
-    if (!token) return false;
-
-    const decodedToken = this.jwtHelper.decodeToken(token);
-    return decodedToken.role === 'admin';
+      console.log(payload.roles[0].value);
+      if (payload.roles[0].value === 'admin') {
+        this.calendarService.createCalendarItem(this.form.value).subscribe();
+        console.log(this.form.value);
+      } else {
+        (this as any).isAdmin = false;
+      }
+    }
   }
 
   onAddButtonClick(): void {

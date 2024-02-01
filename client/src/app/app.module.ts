@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ArticlesComponent } from './articles/articles.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavbarComponent } from './navbar/navbar.component';
 
@@ -30,6 +30,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { CommentsComponent } from './comments/comments.component';
 import { ConfirmDeleteComponent } from './comments/confirm-delete/confirm-delete.component';
 import { UpdateCommentComponent } from './comments/update-comment/update-comment.component';
+import { AuthInterceptor } from './auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,9 @@ import { UpdateCommentComponent } from './comments/update-comment/update-comment
     MatInputModule,
     MatDialogModule,
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

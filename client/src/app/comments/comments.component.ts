@@ -5,7 +5,6 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ServicesService } from '../services.service';
 import { HttpClient } from '@angular/common/http';
-import { UpdateCommentInterface } from './interface/updateComment.interface';
 import { getRoleFromLocalStorage } from '../functions/getRoleFromLocalStorage';
 
 @Component({

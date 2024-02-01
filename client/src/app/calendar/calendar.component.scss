@@ -53,4 +53,19 @@
         font-weight: 400;
         font-family: cursive;
     }
+
+    &__admin {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        &__form {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            max-width: 50%;
+        }
+    }
 }

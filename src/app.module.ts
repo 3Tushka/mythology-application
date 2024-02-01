@@ -12,7 +12,6 @@ import { Article } from './articles/schema/articles.schema';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { CalendarModule } from './calendar/calendar.module';
-import { Calendar } from './calendar/schema/calendar.schema';
 import { SocketGateway } from './socket/socket.gateway';
 import { Message } from './socket/shema/message.schema';
 import { SocketModule } from './socket/socket.module';
@@ -20,6 +19,7 @@ import { ServeStaticModule } from '@nestjs/serve-static';
 import { CommentsModule } from './comments/comments.module';
 import { Comment } from './comments/schema/comments.schema';
 import * as path from 'path';
+import { Calendar } from './calendar/schema/calendar.schema';
 
 @Module({
   imports: [
@@ -44,9 +44,9 @@ import * as path from 'path';
     RolesModule,
     AuthModule,
     ArticlesModule,
-    CalendarModule,
     SocketModule,
     CommentsModule,
+    CalendarModule,
   ],
   controllers: [AppController],
   providers: [AppService, SocketGateway],

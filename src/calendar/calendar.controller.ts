@@ -18,9 +18,9 @@ import { UpdateArticleDto } from 'src/articles/dto/update-article.dto';
 export class CalendarController {
   constructor(private calendarService: CalendarService) {}
 
-  @Post()
   @Roles('admin')
   @UseGuards(RolesGuard)
+  @Post()
   createCalendarItem(@Body() dto: CreateCalendarDto) {
     return this.calendarService.createCalendarItem(dto);
   }
@@ -33,13 +33,15 @@ export class CalendarController {
     return this.calendarService.getCalendarItemById(id);
   }
 
+  @Roles('admin')
+  @UseGuards(RolesGuard)
   @Get()
   getAll() {
     return this.calendarService.getCalendarItemsAll();
   }
 
-  @Roles('admin')
-  @UseGuards(RolesGuard)
+  // @Roles('admin')
+  // @UseGuards(RolesGuard)
   @Put(':id')
   updateCalendarItem(
     @Param('id') id: number,
@@ -48,8 +50,8 @@ export class CalendarController {
     return this.calendarService.updateCalendarItem(id, updateDTO);
   }
 
-  @Roles('admin')
-  @UseGuards(RolesGuard)
+  // @Roles('admin')
+  // @UseGuards(RolesGuard)
   @Delete(':id')
   deleteCalendarItem(@Param('id') id: number) {
     return this.calendarService.deleteCalendarItem(+id);
