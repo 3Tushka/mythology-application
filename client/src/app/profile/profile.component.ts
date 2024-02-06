@@ -64,4 +64,11 @@ export class ProfileComponent implements OnInit {
       },
     );
   }
+
+  logout(): void {
+    localStorage.removeItem('token');
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate([`/`]);
+    });
+  }
 }

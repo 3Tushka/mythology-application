@@ -2,10 +2,13 @@
 
 .article {
     padding: 2rem 1.2rem 0;
-    background-color: $color-cream;
-
     display: flex;
     gap: 2rem;
+
+    background: url("../../assets/backgrounds/kiwihug-3gifzboyZk0-unsplash.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 
     .article-card {
         margin: 1rem 0;

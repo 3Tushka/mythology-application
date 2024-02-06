@@ -12,6 +12,7 @@ import { ConfirmDeleteComponent } from './comments/confirm-delete/confirm-delete
 import { UpdateCommentComponent } from './comments/update-comment/update-comment.component';
 import { AdmintableComponent } from './admintable/admintable.component';
 import { ProfileComponent } from './profile/profile.component';
+import { ErrorPageComponent } from './error-page/error-page.component';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent },
@@ -37,6 +38,10 @@ const routes: Routes = [
   {
     path: 'profile/:id',
     component: ProfileComponent,
+  },
+  {
+    path: 'error',
+    component: ErrorPageComponent,
   },
 ];
 

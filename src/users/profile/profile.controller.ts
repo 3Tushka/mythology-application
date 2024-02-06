@@ -1,8 +1,18 @@
-import { Body, Controller, Get, Param, Put, Req } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Param,
+  Put,
+  Req,
+  UseGuards,
+  Request,
+} from '@nestjs/common';
 import { ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { CreateUserDto } from '../dto/create-user.dto';
 import { User } from '../user.schema';
 import { UsersService } from '../users.service';
+import { UserGuard } from '../user.Guard';
 
 @Controller('profile')
 export class ProfileController {
@@ -11,13 +21,15 @@ export class ProfileController {
   @ApiOperation({ summary: 'Get User' })
   @ApiResponse({ status: 200, type: User })
   @Get(':id')
-  getUser(@Param('id') id: string) {
-    return this.usersService.getUserById(id);
+  @UseGuards(UserGuard)
+  async getUser(@Request() req) {
+    return this.usersService.getUserById(req.params.id);
   }
 
   @ApiOperation({ summary: 'Update User' })
   @ApiResponse({ status: 200, type: User })
   @Put(':id')
+  @UseGuards(UserGuard)
   updateUser(
     @Param('id') id: string,
     @Body() dto: CreateUserDto,

@@ -1,11 +1,4 @@
-.auth-login {
-    width: 100%;
-    height: 100svh;
-}
-
 .auth-wrapper {
-    height: 50svh;
-
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -15,6 +8,22 @@
 .auth-form {
     display: flex;
     flex-direction: column;
-
     gap: 1.2rem;
+}
+
+.auth-registration {
+    width: 100%;
+    height: 100svh;
+
+    background: url("../../assets/backgrounds/kiwihug-3gifzboyZk0-unsplash.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.auth-background {
+    background: rgba(255, 255, 255, 0.6);
+    padding: 1rem 2rem;
+
+    margin: 5rem 0;
 }

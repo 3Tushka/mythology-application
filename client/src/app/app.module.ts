@@ -30,9 +30,11 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { CommentsComponent } from './comments/comments.component';
 import { ConfirmDeleteComponent } from './comments/confirm-delete/confirm-delete.component';
 import { UpdateCommentComponent } from './comments/update-comment/update-comment.component';
-import { AuthInterceptor } from './auth.interceptor';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { AdmintableComponent } from './admintable/admintable.component';
 import { ProfileComponent } from './profile/profile.component';
+import { ErrorInterceptor } from './interceptors/error.interceptor';
+import { ErrorPageComponent } from './error-page/error-page.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +53,7 @@ import { ProfileComponent } from './profile/profile.component';
     UpdateCommentComponent,
     AdmintableComponent,
     ProfileComponent,
+    ErrorPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -71,6 +74,7 @@ import { ProfileComponent } from './profile/profile.component';
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
 })
