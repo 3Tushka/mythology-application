@@ -1,0 +1,94 @@
+<div class="profile-wrapper">
+  <app-navbar />
+  <div class="profile-box" *ngIf="data">
+    <div class="profile">
+      <div class="profile__info">
+        <div class="profile__name">
+          <div class="profile__name__label">Ваше ім'я:</div>
+          <div class="profile__name__data">Андрій Панасюк</div>
+        </div>
+
+        <div class="profile__email">
+          <div class="profile__email__label">Ваш email:</div>
+          <div class="profile__email__data">
+            {{ data.email }}
+          </div>
+        </div>
+
+        <div class="profile__ban">
+          <div class="profile__ban__status">
+            <div class="profile__ban__status__label">Статус:</div>
+            <div
+              class="profile__ban__status__data"
+              [ngClass]="{
+                'profile__ban__status__data--active': data.banStatus
+              }"
+            >
+              {{
+                data.banStatus
+                  ? 'Вибачте, але ваш акаунт заблокований'
+                  : 'Активний'
+              }}
+            </div>
+          </div>
+          <div class="profile__ban__reason" *ngIf="data.banStatus == true">
+            <div class="profile__ban__reason__label">Причина:</div>
+            <div class="profile__ban__reason__data" *ngIf="data.banStatus">
+              {{ data.banReason }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="profile__controll">
+      <form
+        [formGroup]="updateUserInfo"
+        class="profile__form"
+        (ngSubmit)="updateUserInfoModel()"
+      >
+        <div class="profile__form__title">
+          <h2>Редагувати профіль</h2>
+        </div>
+        <mat-form-field class="profile__form__field">
+          <mat-label>Новий Email</mat-label>
+          <input
+            type="email"
+            formControlName="email"
+            class="form-control"
+            placeholder="Email"
+            matInput
+            required
+          />
+          <mat-error *ngIf="updateUserInfo.invalid"
+            >Email обов'язковий</mat-error
+          >
+        </mat-form-field>
+
+        <mat-form-field class="profile__form__field">
+          <mat-label>Новий пароль</mat-label>
+          <input
+            type="password"
+            formControlName="password"
+            class="form-control"
+            placeholder="Пароль"
+            matInput
+            required
+          />
+          <mat-error *ngIf="updateUserInfo.invalid"
+            >Пароль обов'язковий</mat-error
+          >
+        </mat-form-field>
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          [disabled]="updateUserInfo.invalid"
+          class="profile__form__button"
+        >
+          Оновити дані
+        </button>
+      </form>
+    </div>
+  </div>
+  <app-footer />
+</div>

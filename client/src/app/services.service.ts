@@ -12,6 +12,10 @@ import { UpdateCommentInterface } from './interfaces/updateComment.interface';
 export class ServicesService {
   constructor(private httpClient: HttpClient) {}
 
+  getUsers(): Observable<any> {
+    return this.httpClient.get('http://localhost:1268/users');
+  }
+
   getArticles() {
     return this.httpClient.get('http://localhost:1268/articles');
   }
@@ -79,5 +83,18 @@ export class ServicesService {
     return this.httpClient.delete(
       `http://localhost:1268/articles/${id}/comments/${commentId}`,
     );
+  }
+
+  getUserInfo(id: string): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = { Authorization: `Bearer ${token}` };
+    return this.httpClient.get(`http://localhost:1268/profile/${id}`, {
+      headers,
+    });
+  }
+
+  updateUserInfo(id: string, updateDTO: any): Observable<any> {
+    const url = `http://localhost:1268/profile/${id}`;
+    return this.httpClient.put(url, updateDTO);
   }
 }

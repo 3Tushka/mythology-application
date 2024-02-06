@@ -10,6 +10,8 @@ import { AuthFormRegisterComponent } from './auth-form-register/auth-form-regist
 import { CommentsComponent } from './comments/comments.component';
 import { ConfirmDeleteComponent } from './comments/confirm-delete/confirm-delete.component';
 import { UpdateCommentComponent } from './comments/update-comment/update-comment.component';
+import { AdmintableComponent } from './admintable/admintable.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent },
@@ -27,6 +29,14 @@ const routes: Routes = [
   {
     path: 'articles/:id/comments/:commentId/update',
     component: UpdateCommentComponent,
+  },
+  {
+    path: 'adminTable',
+    component: AdmintableComponent,
+  },
+  {
+    path: 'profile/:id',
+    component: ProfileComponent,
   },
 ];
 

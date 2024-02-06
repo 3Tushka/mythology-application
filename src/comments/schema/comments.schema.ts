@@ -26,13 +26,10 @@ export class Comment extends Model {
   @Column({ type: DataType.INTEGER })
   userId: number;
 
-  @BelongsTo(() => User)
-  user: User;
-
   @ForeignKey(() => Article)
   @Column({ type: DataType.INTEGER })
   articleId: number;
 
-  @BelongsTo(() => Article)
-  article: Article;
+  @BelongsTo(() => User)
+  commentAuthor: User;
 }

@@ -31,6 +31,8 @@ import { CommentsComponent } from './comments/comments.component';
 import { ConfirmDeleteComponent } from './comments/confirm-delete/confirm-delete.component';
 import { UpdateCommentComponent } from './comments/update-comment/update-comment.component';
 import { AuthInterceptor } from './auth.interceptor';
+import { AdmintableComponent } from './admintable/admintable.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +49,8 @@ import { AuthInterceptor } from './auth.interceptor';
     CommentsComponent,
     ConfirmDeleteComponent,
     UpdateCommentComponent,
+    AdmintableComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,

@@ -3,6 +3,8 @@ import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { IoAdapter } from '@nestjs/platform-socket.io';
 import * as cookieParser from 'cookie-parser';
+import { join } from 'path';
+import * as serveStatic from 'serve-static';
 
 async function bootstrap() {
   const PORT = process.env.PORT;
@@ -18,6 +20,7 @@ async function bootstrap() {
   app.enableCors(options);
   app.use(cookieParser());
   app.useWebSocketAdapter(new IoAdapter(app));
+  app.use('/public', serveStatic(join(__dirname, '..', 'public')));
 
   const config = new DocumentBuilder()
     .setTitle('Mytholog-application')

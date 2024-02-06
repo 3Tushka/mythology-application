@@ -1,0 +1,99 @@
+@import "../../assets/variables.scss";
+
+.profile-wrapper {
+    background: url("../../assets/backgrounds/kiwihug-3gifzboyZk0-unsplash2.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.profile-box {
+    margin: 5% 18%;
+    padding: 24px 3rem;
+    background: rgba(255, 255, 255, 0.55);
+    min-height: 20rem;
+    border: 1px solid rgba(0, 0, 0, 0.35);
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.profile {
+    &__info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    &__name {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+
+        &__label {
+            font-size: 1rem;
+            font-weight: bold;
+        }
+
+        &__data {
+            font-size: 1.5rem;
+            text-decoration-line: underline;
+            text-underline-offset: 0.45rem;
+            text-decoration-color: $font-color;
+            color: $font-color;
+        }
+    }
+
+    &__email {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+
+        &__label {
+            font-size: 1rem;
+            font-weight: bold;
+        }
+
+        &__data {
+            font-size: 1.5rem;
+        }
+    }
+
+    &__ban {
+    }
+
+    &__controll {
+        padding: 20px;
+        background-color: hsla(208, 100%, 97%, 0.6);
+    }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        &__title {
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+
+        &__field {
+            margin: 0.5rem 0;
+        }
+
+        &__button {
+            margin-top: 1rem;
+            background-color: $color-cream;
+            color: $font-color;
+            border: none;
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+
+            &:hover {
+                background-color: $background-black;
+                color: $color-cream;
+            }
+        }
+    }
+}

@@ -8,9 +8,10 @@ import { UserRoles } from 'src/roles/schemas/user-roles.schema';
 import { RolesModule } from 'src/roles/roles.module';
 import { AuthModule } from 'src/auth/auth.module';
 import { Article } from 'src/articles/schema/articles.schema';
+import { ProfileController } from './profile/profile.controller';
 
 @Module({
-  controllers: [UsersController],
+  controllers: [UsersController, ProfileController],
   providers: [UsersService],
   imports: [
     SequelizeModule.forFeature([User, Role, UserRoles, Article]),
