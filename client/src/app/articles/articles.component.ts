@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { Observable, map } from 'rxjs';
 import { ServicesService } from '../services.service';
 import { HttpClient } from '@angular/common/http';
 import { FormGroup, FormBuilder } from '@angular/forms';
@@ -14,7 +14,7 @@ import { ArticleInterface } from '../interfaces/article.interface';
   templateUrl: './articles.component.html',
   styleUrls: ['./articles.component.scss'],
 })
-export class ArticlesComponent {
+export class ArticlesComponent implements OnInit {
   articles$!: Observable<any>;
   form!: FormGroup;
 
@@ -27,6 +27,12 @@ export class ArticlesComponent {
   seartchForm = this.fb.group({
     searchValue: '',
   });
+
+  filter = {
+    gods: false,
+    creatures: false,
+    myths: false,
+  };
 
   constructor(
     private articlesService: ServicesService,
@@ -55,8 +61,6 @@ export class ArticlesComponent {
       .subscribe(() => {
         this.router.navigate(['/articles']);
       });
-
-    this.articlesService.getSearchArticles;
   }
 
   fetchSearchData(): void {
@@ -73,7 +77,6 @@ export class ArticlesComponent {
     this.fetchSearchData();
   }
 
-  // set this shit in service or whatever
   isAdmin(): boolean {
     const token = this.cookieService.get('token');
     if (!token) return false;

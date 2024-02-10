@@ -12,6 +12,7 @@
     <button mat-button routerLink="/">Home</button>
     <button mat-button routerLink="/articles">Articles</button>
     <button mat-button routerLink="/calendar">Calendar</button>
-    <button mat-button routerLink="/auth/login">Login</button>
+    <button mat-button routerLink="/auth/login" *ngIf="notLogged">Login</button>
+    <button mat-button [routerLink]="['/profile', id]">Profile</button>
   </div>
 </mat-toolbar>
