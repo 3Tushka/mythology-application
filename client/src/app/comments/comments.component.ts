@@ -65,7 +65,7 @@ export class CommentsComponent implements OnInit {
             this.router
               .navigateByUrl('/', { skipLocationChange: true })
               .then(() => {
-                this.router.navigate([`/articles/${this.id}/comments`]);
+                this.router.navigate([`/articles/${this.id}/`]);
               });
           }, 300);
         },

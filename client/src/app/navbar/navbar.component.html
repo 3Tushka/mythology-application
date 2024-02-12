@@ -13,6 +13,8 @@
     <button mat-button routerLink="/articles">Articles</button>
     <button mat-button routerLink="/calendar">Calendar</button>
     <button mat-button routerLink="/auth/login" *ngIf="notLogged">Login</button>
-    <button mat-button [routerLink]="['/profile', id]">Profile</button>
+    <button mat-button [routerLink]="['/profile', id]" *ngIf="!notLogged">
+      Profile
+    </button>
   </div>
 </mat-toolbar>

@@ -35,6 +35,7 @@ import { AdmintableComponent } from './admintable/admintable.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
 import { ErrorPageComponent } from './error-page/error-page.component';
+import { FeedbackComponent } from './feedback/feedback.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { ErrorPageComponent } from './error-page/error-page.component';
     AdmintableComponent,
     ProfileComponent,
     ErrorPageComponent,
+    FeedbackComponent,
   ],
   imports: [
     BrowserModule,

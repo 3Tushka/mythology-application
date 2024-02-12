@@ -13,6 +13,7 @@ import { UpdateCommentComponent } from './comments/update-comment/update-comment
 import { AdmintableComponent } from './admintable/admintable.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
+import { FeedbackComponent } from './feedback/feedback.component';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent },
@@ -42,6 +43,10 @@ const routes: Routes = [
   {
     path: 'error',
     component: ErrorPageComponent,
+  },
+  {
+    path: 'feedback',
+    component: FeedbackComponent,
   },
 ];
 

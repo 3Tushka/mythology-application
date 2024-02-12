@@ -3,8 +3,9 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 import { ArticleInterface } from './interfaces/article.interface';
 import { CalendarDetailsInterface } from './calendar-details/calendar-details.interface';
-import { CommentInterface } from './article-details/article-details.interface';
 import { UpdateCommentInterface } from './interfaces/updateComment.interface';
+import { CreateFeedbackMessageDto } from './interfaces/createFeedback.dto';
+import { FeedbackInterface } from './interfaces/feedback.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -96,5 +97,41 @@ export class ServicesService {
   updateUserInfo(id: string, updateDTO: any): Observable<any> {
     const url = `http://localhost:1268/profile/${id}`;
     return this.httpClient.put(url, updateDTO);
+  }
+
+  createFeedbackMessage(dto: CreateFeedbackMessageDto) {
+    const url = `http://localhost:1268/feedback`;
+    return this.httpClient.post(url, dto);
+  }
+
+  getAllFeedbackMessages() {
+    return this.httpClient.get(`http://localhost:1268/feedback-admin`);
+  }
+
+  getFeedbackMessageById(id: string) {
+    return this.httpClient.get(`http://localhost:1268/feedback-admin/${id}`);
+  }
+
+  deleteFeedbackMessage(id: string) {
+    return this.httpClient.delete(
+      `http://localhost::1268/feedback-admin/${id}`,
+    );
+  }
+
+  markFeedbackMessageAsFixed(id: string) {
+    return this.httpClient.post(
+      `http://localhost:1268/feedback-admin/${id}`,
+      {},
+    );
+  }
+
+  // idk fix fast
+  getSearchFeedbackMessages(search: string) {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + token);
+    return this.httpClient.get<FeedbackInterface[]>(
+      `http://localhost:1268/feedback?theme=${search}`,
+      { headers: headers },
+    );
   }
 }

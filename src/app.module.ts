@@ -20,6 +20,9 @@ import { CommentsModule } from './comments/comments.module';
 import { Comment } from './comments/schema/comments.schema';
 import * as path from 'path';
 import { Calendar } from './calendar/schema/calendar.schema';
+import { FeedbackPostModule } from './feedback/feedback-post/feedback-post.module';
+import { Feedback } from './feedback/schema/feedback.schema';
+import { FeedbackAdminModule } from './feedback/feedback-admin/feedback-admin.module';
 
 @Module({
   imports: [
@@ -36,7 +39,16 @@ import { Calendar } from './calendar/schema/calendar.schema';
       username: process.env.POSTGRES_USER,
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_DB,
-      models: [User, Role, UserRoles, Article, Calendar, Message, Comment],
+      models: [
+        User,
+        Role,
+        UserRoles,
+        Article,
+        Calendar,
+        Message,
+        Comment,
+        Feedback,
+      ],
       autoLoadModels: true,
       synchronize: true,
     }),
@@ -47,6 +59,8 @@ import { Calendar } from './calendar/schema/calendar.schema';
     SocketModule,
     CommentsModule,
     CalendarModule,
+    FeedbackPostModule,
+    FeedbackAdminModule,
   ],
   controllers: [AppController],
   providers: [AppService, SocketGateway],
