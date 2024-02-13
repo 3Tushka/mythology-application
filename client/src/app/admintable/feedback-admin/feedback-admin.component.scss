@@ -1,0 +1,49 @@
+.feedback-admin {
+    display: flex;
+    background-image: url("../../../assets/backgrounds/kiwihug-3gifzboyZk0-unsplash2.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    .feedback-admin__content {
+        width: 100%;
+
+        margin: 2rem 4rem;
+        &__loop {
+            width: 100%;
+        }
+
+        &__loop {
+            display: flex;
+            flex-direction: column;
+
+            margin: 1rem 0;
+        }
+    }
+}
+
+.accordion {
+    &__theme {
+        color: red;
+        margin-left: 0.3rem;
+    }
+
+    &__from {
+        color: #200974;
+    }
+
+    &__from--email {
+        color: #200974;
+        margin-left: 0.3rem;
+    }
+
+    &__controll {
+        display: flex;
+        gap: 1.5rem;
+        z-index: 2;
+    }
+}
+
+.mat-expansion-panel-header-description {
+    justify-content: space-between;
+}

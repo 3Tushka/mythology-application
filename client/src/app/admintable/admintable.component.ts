@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ServicesService } from '../services.service';
-import { Observable } from 'rxjs/internal/Observable';
-import { AdmintableInterface } from './interfaces/admintable.interface';
 
 @Component({
   selector: 'app-admintable',

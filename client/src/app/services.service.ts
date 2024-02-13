@@ -105,22 +105,26 @@ export class ServicesService {
   }
 
   getAllFeedbackMessages() {
-    return this.httpClient.get(`http://localhost:1268/feedback-admin`);
+    return this.httpClient.get(
+      `http://localhost:1268/admin-table/feedback-admin`,
+    );
   }
 
   getFeedbackMessageById(id: string) {
-    return this.httpClient.get(`http://localhost:1268/feedback-admin/${id}`);
+    return this.httpClient.get(
+      `http://localhost:1268/admin-table/feedback-admin/${id}`,
+    );
   }
 
   deleteFeedbackMessage(id: string) {
     return this.httpClient.delete(
-      `http://localhost::1268/feedback-admin/${id}`,
+      `http://localhost::1268/admin-table/feedback-admin/${id}`,
     );
   }
 
   markFeedbackMessageAsFixed(id: string) {
     return this.httpClient.post(
-      `http://localhost:1268/feedback-admin/${id}`,
+      `http://localhost:1268/admin-table/feedback-admin/${id}/mark-as-fixed`,
       {},
     );
   }

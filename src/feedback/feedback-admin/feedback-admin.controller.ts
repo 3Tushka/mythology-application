@@ -11,12 +11,12 @@ import { FeedbackService } from '../feedback.service';
 import { Roles } from 'src/auth/decorator/roles-auth.decorator';
 import { RolesGuard } from 'src/auth/guards/roles.guard';
 
-@Controller('feedback-admin')
+@Controller('admin-table/feedback-admin')
 export class FeedbackAdminController {
   constructor(private feedbackMessageAdminService: FeedbackService) {}
 
-  @Roles('admin')
-  @UseGuards(RolesGuard)
+  // @Roles('admin')
+  // @UseGuards(RolesGuard)
   @Get()
   getAllFeedbackMessages() {
     return this.feedbackMessageAdminService.getAllFeedbacks();

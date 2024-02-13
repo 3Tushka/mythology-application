@@ -36,6 +36,11 @@ import { ProfileComponent } from './profile/profile.component';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { FeedbackComponent } from './feedback/feedback.component';
+import { SidebarComponent } from './navbar/sidebar/sidebar.component';
+import { FeedbackAdminComponent } from './admintable/feedback-admin/feedback-admin.component';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { FeedbackConfirmDeleteComponent } from './admintable/feedback-admin/feedback-confirm-delete/feedback-confirm-delete.component';
+import { FeedbackConfirmMarkComponent } from './admintable/feedback-admin/feedback-confirm-mark/feedback-confirm-mark.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +61,10 @@ import { FeedbackComponent } from './feedback/feedback.component';
     ProfileComponent,
     ErrorPageComponent,
     FeedbackComponent,
+    SidebarComponent,
+    FeedbackAdminComponent,
+    FeedbackConfirmDeleteComponent,
+    FeedbackConfirmMarkComponent,
   ],
   imports: [
     BrowserModule,
@@ -73,6 +82,8 @@ import { FeedbackComponent } from './feedback/feedback.component';
     MatFormFieldModule,
     MatInputModule,
     MatDialogModule,
+    MatExpansionModule,
+    MatButtonModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

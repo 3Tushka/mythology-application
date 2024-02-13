@@ -1,5 +1,14 @@
-<p>admintable works!</p>
-
-<div class="f" *ngFor="let user of users">
-  {{ user.email }}
+<app-navbar></app-navbar>
+<div class="admin-wrapper">
+  <div class="admin-sidebar">
+    <app-sidebar> </app-sidebar>
+  </div>
+  <div class="admin-content">
+    <div class="admin">
+      <div class="f" *ngFor="let user of users">
+        {{ user.email }}
+      </div>
+    </div>
+  </div>
 </div>
+<app-footer></app-footer>

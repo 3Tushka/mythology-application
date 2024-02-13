@@ -14,6 +14,9 @@ import { AdmintableComponent } from './admintable/admintable.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { FeedbackComponent } from './feedback/feedback.component';
+import { FeedbackAdminComponent } from './admintable/feedback-admin/feedback-admin.component';
+import { FeedbackConfirmDeleteComponent } from './admintable/feedback-admin/feedback-confirm-delete/feedback-confirm-delete.component';
+import { FeedbackConfirmMarkComponent } from './admintable/feedback-admin/feedback-confirm-mark/feedback-confirm-mark.component';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent },
@@ -33,7 +36,7 @@ const routes: Routes = [
     component: UpdateCommentComponent,
   },
   {
-    path: 'adminTable',
+    path: 'admin-table',
     component: AdmintableComponent,
   },
   {
@@ -47,6 +50,18 @@ const routes: Routes = [
   {
     path: 'feedback',
     component: FeedbackComponent,
+  },
+  {
+    path: 'admin-table/feedback-admin',
+    component: FeedbackAdminComponent,
+  },
+  {
+    path: 'admin-table/feedback-admin/:id',
+    component: FeedbackConfirmDeleteComponent,
+  },
+  {
+    path: 'admin-table/feedback-admin/:id/mark-as-fixed',
+    component: FeedbackConfirmMarkComponent,
   },
 ];
 

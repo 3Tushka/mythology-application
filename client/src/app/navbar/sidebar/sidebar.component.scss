@@ -1,0 +1,48 @@
+@import "../../../assets/variables.scss";
+
+.sidenav-container {
+    height: 70svh;
+    background-color: $background-black;
+    border-bottom: 1px solid $color-cream;
+}
+
+.sidenav {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    margin: 0;
+    padding: 0;
+
+    &__list {
+        list-style: none;
+        padding: 0;
+        margin: 2rem 1rem;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 2rem;
+
+        &__item {
+            font-size: 1.3rem;
+            font-weight: 400;
+            font-family: $font-medival;
+            transition: 250ms ease;
+        }
+
+        &__item:hover {
+            color: #ffffff;
+            transform: translateX(10px);
+        }
+
+        &__link {
+            text-decoration: none;
+            color: $color-cream;
+            transition: 100ms ease-in-out;
+        }
+
+        &__link:hover {
+            color: #ffffff;
+        }
+    }
+}

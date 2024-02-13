@@ -1,0 +1,20 @@
+<div class="sidenav-container">
+  <div class="sidenav">
+    <ul class="sidenav__list">
+      <li class="sidenav__list__item" *ngIf="urlPath !== 'feedback-admin'">
+        <a class="sidenav__list__link" routerLink="feedback-admin">
+          Feedback
+        </a>
+      </li>
+      <li class="sidenav__list__item" *ngIf="urlPath !== 'users'">
+        <a class="sidenav__list__link" routerLink="users"> Users </a>
+      </li>
+      <li class="sidenav__list__item" *ngIf="urlPath !== 'articles'">
+        <a class="sidenav__list__link" routerLink="articles"> Articles </a>
+      </li>
+      <li class="sidenav__list__item" *ngIf="urlPath !== 'calendar'">
+        <a class="sidenav__list__link" routerLink="calendar"> Calendar </a>
+      </li>
+    </ul>
+  </div>
+</div>

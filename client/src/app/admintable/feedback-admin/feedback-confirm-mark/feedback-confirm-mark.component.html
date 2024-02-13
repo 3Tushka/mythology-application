@@ -1,0 +1,28 @@
+<div class="confirm-delete-wrapper">
+  <div class="confirm-delete">
+    <div class="confirm-delete__title">
+      <h2 class="confirm-delete__title__h">Confirm fix</h2>
+      <p class="confirm-delete__title__text">Mark this feedback as fixed?</p>
+    </div>
+    <div class="confirm-delete__controll">
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        (click)="markAsFixed()"
+        class="confirm-delete__controll__button"
+      >
+        Yes
+      </button>
+      <button
+        mat-raised-button
+        color="warn"
+        type="submit"
+        (click)="returnToFeedbackTable()"
+        class="confirm-delete__controll__button"
+      >
+        No. Go back.
+      </button>
+    </div>
+  </div>
+</div>
