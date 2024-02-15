@@ -41,6 +41,9 @@ import { FeedbackAdminComponent } from './admintable/feedback-admin/feedback-adm
 import { MatExpansionModule } from '@angular/material/expansion';
 import { FeedbackConfirmDeleteComponent } from './admintable/feedback-admin/feedback-confirm-delete/feedback-confirm-delete.component';
 import { FeedbackConfirmMarkComponent } from './admintable/feedback-admin/feedback-confirm-mark/feedback-confirm-mark.component';
+import { UsersAdminComponent } from './admintable/users-admin/users-admin.component';
+import { ArticlesAdminComponent } from './admintable/articles-admin/articles-admin.component';
+import { CalendarAdminComponent } from './admintable/calendar-admin/calendar-admin.component';
 
 @NgModule({
   declarations: [
@@ -65,6 +68,9 @@ import { FeedbackConfirmMarkComponent } from './admintable/feedback-admin/feedba
     FeedbackAdminComponent,
     FeedbackConfirmDeleteComponent,
     FeedbackConfirmMarkComponent,
+    UsersAdminComponent,
+    ArticlesAdminComponent,
+    CalendarAdminComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, map } from 'rxjs';
+import { Observable } from 'rxjs';
 import { ServicesService } from '../services.service';
 import { HttpClient } from '@angular/common/http';
 import { FormGroup, FormBuilder } from '@angular/forms';
@@ -37,30 +37,10 @@ export class ArticlesComponent implements OnInit {
   constructor(
     private articlesService: ServicesService,
     private fb: FormBuilder,
-    private http: HttpClient,
-    private router: Router,
-    private cookieService: CookieService,
   ) {}
 
   ngOnInit(): void {
-    this.form = this.fb.group({
-      title: '',
-      content: '',
-      category: '',
-      image: '',
-    });
-
     this.fetchSearchData();
-  }
-
-  submit(): void {
-    this.http
-      .post('http://localhost:1268/articles', this.form.getRawValue(), {
-        withCredentials: true,
-      })
-      .subscribe(() => {
-        this.router.navigate(['/articles']);
-      });
   }
 
   fetchSearchData(): void {
@@ -75,14 +55,6 @@ export class ArticlesComponent implements OnInit {
   onSearchSubmit(): void {
     this.searchValue = this.seartchForm.value.searchValue ?? '';
     this.fetchSearchData();
-  }
-
-  isAdmin(): boolean {
-    const token = this.cookieService.get('token');
-    if (!token) return false;
-
-    const decodedToken = this.jwtHelper.decodeToken(token);
-    return decodedToken.role === 'admin';
   }
 
   onAddButtonClick(): void {

@@ -1,0 +1,50 @@
+<app-navbar></app-navbar>
+<div class="users-wrapper">
+  <div class="users">
+    <div class="users__sidebar">
+      <app-sidebar></app-sidebar>
+    </div>
+    <div class="users__content">
+      <div class="users__conent__header">
+        <h1 class="users__content__header__title">Users</h1>
+      </div>
+      <div class="users__content__table" *ngIf="users">
+        <div class="user__content__table__header">
+          <ul class="list">
+            <li>Name</li>
+            <li>Email</li>
+            <li>Status</li>
+            <li>Role</li>
+            <li></li>
+          </ul>
+        </div>
+        <div class="users__content__loop" *ngFor="let item of users">
+          <div class="users__content__item">
+            <div class="users__content__name">
+              <span>Name: </span>
+              <span>{{ item.name }}</span>
+            </div>
+            <div class="users__content__email">
+              <span class="email">{{ item.email }}</span>
+            </div>
+            <div class="users__content__banStatus">
+              <span class="status">
+                {{ item.isBanned ? 'Banned' : '   ' }}
+              </span>
+            </div>
+            <div class="users__content__role">
+              <span>{{
+                item.role[0].value === 'user' ? 'User' : 'Admin'
+              }}</span>
+            </div>
+
+            <div class="users__content__controll">
+              <button mat-raised-button color="warn" [routerLink]=""></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

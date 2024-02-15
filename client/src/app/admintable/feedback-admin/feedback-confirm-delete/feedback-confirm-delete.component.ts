@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ServicesService } from 'src/app/services.service';
+import { ServicesService } from '../../../services.service';
 
 @Component({
   selector: 'app-feedback-confirm-delete',

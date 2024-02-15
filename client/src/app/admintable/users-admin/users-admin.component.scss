@@ -1,0 +1,45 @@
+.users {
+    display: flex;
+
+    &__content {
+        background: url("../../../assets/backgrounds/kiwihug-3gifzboyZk0-unsplash.jpg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 100%;
+
+        padding: 2rem 4rem;
+
+        &__table {
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        &__loop {
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid rgb(218, 218, 218);
+        }
+
+        &__item {
+            display: flex;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+
+        &__item > div {
+            max-width: 80px;
+        }
+        .list {
+            display: flex;
+            justify-content: space-between;
+            list-style: none;
+            padding: 0;
+        }
+    }
+}

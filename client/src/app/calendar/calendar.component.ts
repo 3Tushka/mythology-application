@@ -22,8 +22,6 @@ export class CalendarComponent {
   constructor(
     private calendarService: ServicesService,
     private fb: FormBuilder,
-    private http: HttpClient,
-    private router: Router,
   ) {}
 
   ngOnInit(): void {

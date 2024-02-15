@@ -1,0 +1,119 @@
+<app-navbar></app-navbar>
+<div class="articles-admin-wrapper">
+  <div class="articles-admin">
+    <div class="articles-admin__sidebar">
+      <app-sidebar></app-sidebar>
+    </div>
+    <div class="articles-admin__content">
+      <div class="articles-admin__controlls">
+        <div class="search" *ngIf="!isAddButtonClicked">
+          <form
+            [formGroup]="seartchForm"
+            class="search__form"
+            (ngSubmit)="onSearchSubmit()"
+          >
+            <mat-form-field>
+              <mat-label>Search...</mat-label>
+              <input
+                type="text"
+                formControlName="searchValue"
+                class="form-control"
+                matInput
+              />
+            </mat-form-field>
+          </form>
+        </div>
+
+        <div class="open-form-box">
+          <button
+            class="open-form-box__add"
+            mat-raised-button
+            color="primary"
+            (click)="onAddButtonClick()"
+            *ngIf="!isAddButtonClicked"
+          >
+            Add article
+          </button>
+          <mat-icon
+            class="open-form-box__close"
+            mat-raised-button
+            (click)="onCloseButtonClick()"
+            *ngIf="isAddButtonClicked"
+            >close</mat-icon
+          >
+        </div>
+      </div>
+
+      <div class="articles-admin__form-box" *ngIf="isAddButtonClicked">
+        <form
+          [formGroup]="form"
+          (submit)="submit()"
+          class="articles-admin__form-box__form"
+        >
+          <mat-form-field>
+            <mat-label>Title</mat-label>
+            <input
+              type="text"
+              formControlName="title"
+              type="text"
+              class="form-control"
+              placeholder="Title"
+              matInput
+              required
+            />
+            <mat-error *ngIf="form.invalid">Title is required</mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Category</mat-label>
+            <input
+              type="text"
+              formControlName="category"
+              type="text"
+              class="form-control"
+              placeholder="Category"
+              matInput
+              required
+            />
+            <mat-error *ngIf="form.invalid">Category is required</mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Content</mat-label>
+            <textarea
+              type="text"
+              formControlName="content"
+              type="text"
+              class="form-control"
+              placeholder="Content"
+              matInput
+              required
+            ></textarea>
+            <mat-error *ngIf="form.invalid">Content is required</mat-error>
+          </mat-form-field>
+
+          <input type="file" (change)="onFileChange($event)" />
+
+          <button
+            mat-raised-button
+            color="primary"
+            type="submit"
+            [disabled]="form.invalid"
+          >
+            Submit
+          </button>
+        </form>
+      </div>
+
+      <div class="articles-admin__loop" *ngIf="!isAddButtonClicked">
+        <mat-card class="article-card" *ngFor="let article of searchedArticle">
+          <div class="article__link" [routerLink]="['/articles', article.id]">
+            <mat-card-header>
+              <mat-card-title>{{ article.title }}</mat-card-title>
+              <mat-card-subtitle>{{ article.category }}</mat-card-subtitle>
+            </mat-card-header>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

@@ -1,135 +1,136 @@
 <div class="article-wrapper">
   <app-navbar></app-navbar>
-  <div class="art" *ngIf="data?.category == 'Vampires'">
-    <div class="article-detail" *ngIf="data">
-      <div class="article-detail__upper">
-        <div class="article-detail__box">
-          <div class="article-detail__info">
-            <div class="article-detail__info__title">
-              <span class="article-detail__info__title__main">{{
-                data.title
-              }}</span>
-              <span class="article-detail__info__title__">{{
-                data.category
-              }}</span>
-            </div>
-            <div class="article-detail__info__content">
-              <span
-                ><p>{{ data.content }}</p></span
-              >
-            </div>
+  <!-- <div class="art" *ngIf="data?.category == 'Vampires'"> -->
+  <div class="article-link">
+    <mat-icon routerLink="/admin-table/articles-admin" *ngIf="isAdmin == true">
+      keyboard_arrow_left
+    </mat-icon>
+  </div>
+  <div class="article-detail" *ngIf="data">
+    <div class="article-detail__upper">
+      <div class="article-detail__box">
+        <div class="article-detail__info">
+          <div class="article-detail__info__title">
+            <span class="article-detail__info__title__main">{{
+              data.title
+            }}</span>
+            <span class="article-detail__info__title">{{ data.category }}</span>
           </div>
-        </div>
-        <div class="article-detail__line"></div>
-        <div class="article-detail__box">
-          <div class="article-detail__image">
-            <!-- change to fetched data.image??? -->
-            <img
-              mat-card-image
-              src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-              alt="card-image"
-            />
+          <div class="article-detail__info__content">
+            <span
+              ><p>{{ data.content }}</p></span
+            >
           </div>
         </div>
       </div>
-      <button mat-raised-button color="primary" [routerLink]="['comments']">
-        Go to Comments
-      </button>
-      <div class="article-detail__controll" *ngIf="isAdmin == true">
-        <button
-          mat-raised-button
-          color="primary"
-          (click)="showForm = true"
-          *ngIf="showForm == false"
-        >
-          Update
-        </button>
-        <div class="article-detail__form-box" *ngIf="showForm">
-          <form
-            [formGroup]="updateForm"
-            class="article-detail__form"
-            (ngSubmit)="updateModel()"
-          >
-            <div class="article-detail__form-title">
-              <h2>Update article</h2>
-              <button
-                class="close"
-                mat-icon-button
-                (click)="showForm = false"
-                *ngIf="showForm == true"
-              >
-                <mat-icon>close</mat-icon>
-              </button>
-            </div>
-            <mat-form-field>
-              <mat-label>Title</mat-label>
-              <input
-                type="text"
-                formControlName="title"
-                class="form-control"
-                placeholder="Title"
-                matInput
-                required
-              />
-              <mat-error *ngIf="updateForm.invalid"
-                >Title is required</mat-error
-              >
-            </mat-form-field>
-
-            <mat-form-field>
-              <mat-label>Content</mat-label>
-              <textarea
-                type="text"
-                formControlName="content"
-                class="form-control"
-                placeholder="Content"
-                matInput
-                cols="35"
-                rows="8"
-                required
-              ></textarea>
-              <mat-error *ngIf="updateForm.invalid"
-                >Content is required</mat-error
-              >
-            </mat-form-field>
-
-            <mat-form-field>
-              <mat-label>Content</mat-label>
-              <input
-                type="text"
-                formControlName="category"
-                class="form-control"
-                placeholder="Category"
-                matInput
-                required
-              />
-              <mat-error *ngIf="updateForm.invalid"
-                >Category is required</mat-error
-              >
-            </mat-form-field>
-
-            <button
-              mat-raised-button
-              color="primary"
-              type="submit"
-              [disabled]="updateForm.invalid"
-            >
-              Submit
-            </button>
-          </form>
+      <div class="article-detail__line"></div>
+      <div class="article-detail__box">
+        <div class="article-detail__image">
+          <!-- change to fetched data.image??? -->
+          <img
+            mat-card-image
+            src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+            alt="card-image"
+          />
         </div>
-
-        <button
-          mat-raised-button
-          color="warn"
-          type="submit"
-          (click)="delete(data.id)"
-          *ngIf="showForm == false"
-        >
-          Delete
-        </button>
       </div>
     </div>
+    <button mat-raised-button color="primary" [routerLink]="['comments']">
+      Go to Comments
+    </button>
+    <div class="article-detail__controll" *ngIf="isAdmin == true">
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="showForm = true"
+        *ngIf="showForm == false"
+      >
+        Update
+      </button>
+      <div class="article-detail__form-box" *ngIf="showForm">
+        <form
+          [formGroup]="updateForm"
+          class="article-detail__form"
+          (ngSubmit)="updateModel()"
+        >
+          <div class="article-detail__form-title">
+            <h2>Update article</h2>
+            <button
+              class="close"
+              mat-icon-button
+              (click)="showForm = false"
+              *ngIf="showForm == true"
+            >
+              <mat-icon>close</mat-icon>
+            </button>
+          </div>
+          <mat-form-field>
+            <mat-label>Title</mat-label>
+            <input
+              type="text"
+              formControlName="title"
+              class="form-control"
+              placeholder="Title"
+              matInput
+              required
+            />
+            <mat-error *ngIf="updateForm.invalid">Title is required</mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Content</mat-label>
+            <textarea
+              type="text"
+              formControlName="content"
+              class="form-control"
+              placeholder="Content"
+              matInput
+              cols="35"
+              rows="8"
+              required
+            ></textarea>
+            <mat-error *ngIf="updateForm.invalid"
+              >Content is required</mat-error
+            >
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Content</mat-label>
+            <input
+              type="text"
+              formControlName="category"
+              class="form-control"
+              placeholder="Category"
+              matInput
+              required
+            />
+            <mat-error *ngIf="updateForm.invalid"
+              >Category is required</mat-error
+            >
+          </mat-form-field>
+
+          <button
+            mat-raised-button
+            color="primary"
+            type="submit"
+            [disabled]="updateForm.invalid"
+          >
+            Submit
+          </button>
+        </form>
+      </div>
+
+      <button
+        mat-raised-button
+        color="warn"
+        type="submit"
+        (click)="delete(data.id)"
+        *ngIf="showForm == false"
+      >
+        Delete
+      </button>
+    </div>
   </div>
-  <app-footer></app-footer>
 </div>
+<app-footer></app-footer>
+<!-- </div> -->

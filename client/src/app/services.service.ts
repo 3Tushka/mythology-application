@@ -6,6 +6,8 @@ import { CalendarDetailsInterface } from './calendar-details/calendar-details.in
 import { UpdateCommentInterface } from './interfaces/updateComment.interface';
 import { CreateFeedbackMessageDto } from './interfaces/createFeedback.dto';
 import { FeedbackInterface } from './interfaces/feedback.interface';
+import { AddRoleDto } from './interfaces/addRole.dto';
+import { BanUserDto } from './interfaces/banUser.dto';
 
 @Injectable({
   providedIn: 'root',
@@ -17,12 +19,33 @@ export class ServicesService {
     return this.httpClient.get('http://localhost:1268/users');
   }
 
+  addRole(dto: AddRoleDto): Observable<any> {
+    return this.httpClient.post('http://localhost:1268/users/role', dto);
+  }
+
+  //Delete dto same as AddRoleDto. Lazy enough to create another dto
+  deleteRole(dto: AddRoleDto): Observable<any> {
+    return this.httpClient.post('http://localhost:1268/users/role/delete', dto);
+  }
+
+  banUser(dto: BanUserDto): Observable<any> {
+    return this.httpClient.post('http://localhost:1268/users/ban', dto);
+  }
+
+  unbanUser(dto: BanUserDto): Observable<any> {
+    return this.httpClient.post('http://localhost:1268/users/unban', dto);
+  }
+
   getArticles() {
     return this.httpClient.get('http://localhost:1268/articles');
   }
 
   getArticleDetails(id: string): Observable<any> {
     return this.httpClient.get('http://localhost:1268/articles/' + id);
+  }
+
+  createArticle(article: ArticleInterface): Observable<any> {
+    return this.httpClient.post('http://localhost:1268/articles', article);
   }
 
   deleteArticle(id: string): Observable<any> {
