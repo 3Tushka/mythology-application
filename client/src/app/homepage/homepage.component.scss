@@ -1,5 +1,78 @@
 @import "../../assets/variables.scss";
 
+.parallax {
+    min-height: 80svh;
+    position: relative;
+    background-image: url("../../assets/backgrounds/enchanting-forest-landscape-fern-leaf-mystery-generative-ai.jpg");
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .parallax-wrap {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 2rem 15%;
+        padding: 1rem;
+        color: white;
+
+        position: absolute;
+        width: 70%;
+        z-index: 1;
+        top: 20%;
+        left: 0%;
+    }
+
+    &__box:nth-child(2) {
+        max-width: 20%;
+
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    &__logo {
+        font-size: 6rem;
+        font-family: "Barlow-Condensed";
+
+        display: flex;
+
+        margin-right: 5rem;
+    }
+
+    &__bottom::before {
+        content: "";
+        background-color: #1a2126;
+        width: 0.2rem;
+        height: 8.1rem;
+        display: inline-flex;
+        transform: rotate(35deg);
+        margin: 20px 0;
+    }
+}
+
+.parallax::before {
+    /* Position the pseudo-element over the .parallax element */
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Set the opacity */
+    /* Set the background color to semi-transparent black */
+}
+
 .homepage {
     background-image: url(../../assets/backgrounds/kiwihug-3gifzboyZk0-unsplash2.jpg);
     width: 100%;

@@ -36,6 +36,13 @@ export class ArticlesAdminComponent implements OnInit {
       content: '',
       category: '',
       image: [null],
+      temper: '',
+      location: '',
+      appointment: '',
+      amulet: '',
+      fairing: '',
+      magicaItem: '',
+      origin: '',
     });
 
     this.fetchSearchData();
@@ -54,6 +61,13 @@ export class ArticlesAdminComponent implements OnInit {
     formData.append('content', this.form.get('content').value);
     formData.append('category', this.form.get('category').value);
     formData.append('image', this.form.get('image').value);
+    formData.append('temper', this.form.get('temper').value);
+    formData.append('location', this.form.get('location').value);
+    formData.append('appointment', this.form.get('appointment').value);
+    formData.append('amulet', this.form.get('amulet').value);
+    formData.append('fairing', this.form.get('fairing').value);
+    formData.append('magicaItem', this.form.get('magicaItem').value);
+    formData.append('origin', this.form.get('origin').value);
 
     this.http.post('http://localhost:1268/articles', formData).subscribe(() => {
       setTimeout(() => {

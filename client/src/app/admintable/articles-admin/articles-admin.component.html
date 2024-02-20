@@ -90,6 +90,104 @@
             <mat-error *ngIf="form.invalid">Content is required</mat-error>
           </mat-form-field>
 
+          <mat-form-field>
+            <mat-label>Temper</mat-label>
+            <textarea
+              type="text"
+              formControlName="temper"
+              type="text"
+              class="form-control"
+              placeholder="Temper"
+              matInput
+              required
+            ></textarea>
+            <mat-error *ngIf="form.invalid">Temper is required</mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Location</mat-label>
+            <textarea
+              type="text"
+              formControlName="location"
+              type="text"
+              class="form-control"
+              placeholder="Location"
+              matInput
+              required
+            ></textarea>
+            <mat-error *ngIf="form.invalid">Location is required</mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Appointment</mat-label>
+            <textarea
+              type="text"
+              formControlName="appointment"
+              type="text"
+              class="form-control"
+              placeholder="Appointment"
+              matInput
+              required
+            ></textarea>
+            <mat-error *ngIf="form.invalid">Appointment is required</mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Amulet</mat-label>
+            <textarea
+              type="text"
+              formControlName="amulet"
+              type="text"
+              class="form-control"
+              placeholder="Amulet"
+              matInput
+              required
+            ></textarea>
+            <mat-error *ngIf="form.invalid">Amulet is required</mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Fairing</mat-label>
+            <textarea
+              type="text"
+              formControlName="fairing"
+              type="text"
+              class="form-control"
+              placeholder="Fairing"
+              matInput
+              required
+            ></textarea>
+            <mat-error *ngIf="form.invalid">Fairing is required</mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Item</mat-label>
+            <textarea
+              type="text"
+              formControlName="magicaItem"
+              type="text"
+              class="form-control"
+              placeholder="Item"
+              matInput
+              required
+            ></textarea>
+            <mat-error *ngIf="form.invalid">Item is required</mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Origin</mat-label>
+            <textarea
+              type="text"
+              formControlName="origin"
+              type="text"
+              class="form-control"
+              placeholder="Origin"
+              matInput
+              required
+            ></textarea>
+            <mat-error *ngIf="form.invalid">Origin is required</mat-error>
+          </mat-form-field>
+
           <input type="file" (change)="onFileChange($event)" />
 
           <button
