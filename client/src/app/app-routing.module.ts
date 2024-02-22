@@ -55,24 +55,27 @@ const routes: Routes = [
     component: FeedbackComponent,
   },
   {
-    path: 'admin-table/feedback-admin',
+    path: 'feedback-admin',
     component: FeedbackAdminComponent,
+
+    children: [
+      {
+        path: ':id/delete',
+        component: FeedbackConfirmDeleteComponent,
+      },
+      {
+        path: ':id/mark-as-fixed',
+        component: FeedbackConfirmMarkComponent,
+      },
+    ],
   },
   {
-    path: 'admin-table/feedback-admin/:id',
-    component: FeedbackConfirmDeleteComponent,
-  },
-  {
-    path: 'admin-table/feedback-admin/:id/mark-as-fixed',
-    component: FeedbackConfirmMarkComponent,
-  },
-  {
-    path: 'admin-table/users-admin',
+    path: 'users-admin',
     component: UsersAdminComponent,
   },
-  { path: 'admin-table/articles-admin', component: ArticlesAdminComponent },
+  { path: 'articles-admin', component: ArticlesAdminComponent },
   {
-    path: 'admin-table/calendar-admin',
+    path: 'calendar-admin',
     component: CalendarAdminComponent,
   },
 ];

@@ -3,9 +3,9 @@
   <div class="profile-box" *ngIf="data">
     <div class="profile">
       <div class="profile__info">
-        <div class="profile__name">
+        <div class="profile__name" *ngIf="data.username">
           <div class="profile__name__label">Ваше ім'я:</div>
-          <div class="profile__name__data">Андрій Панасюк</div>
+          <div class="profile__name__data">{{ data.username }}</div>
         </div>
 
         <div class="profile__email">
@@ -51,6 +51,18 @@
           <h2>Редагувати профіль</h2>
         </div>
         <mat-form-field class="profile__form__field">
+          <mat-label>Нове ім'я</mat-label>
+          <input
+            type="text"
+            formControlName="username"
+            class="form-control"
+            placeholder="Ім'я"
+            matInput
+          />
+          <mat-error *ngIf="updateUserInfo.invalid">Ім'я</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="profile__form__field">
           <mat-label>Новий Email</mat-label>
           <input
             type="email"
@@ -58,7 +70,6 @@
             class="form-control"
             placeholder="Email"
             matInput
-            required
           />
           <mat-error *ngIf="updateUserInfo.invalid"
             >Email обов'язковий</mat-error
@@ -73,7 +84,6 @@
             class="form-control"
             placeholder="Пароль"
             matInput
-            required
           />
           <mat-error *ngIf="updateUserInfo.invalid"
             >Пароль обов'язковий</mat-error

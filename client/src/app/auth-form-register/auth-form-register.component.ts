@@ -19,6 +19,7 @@ export class AuthFormRegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
+      username: '',
       email: '',
       password: '',
     });

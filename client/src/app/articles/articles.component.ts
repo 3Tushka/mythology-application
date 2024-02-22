@@ -29,7 +29,7 @@ export class ArticlesComponent implements OnInit {
     { category: 'creatures' },
     { category: 'spirits' },
     { category: 'gods' },
-    { category: 'Монстр' },
+    { category: 'Створіння' },
     { category: 'Дух' },
     { category: 'Бог' },
   ];

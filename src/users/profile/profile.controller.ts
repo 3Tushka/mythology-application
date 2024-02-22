@@ -7,6 +7,7 @@ import {
   Req,
   UseGuards,
   Request,
+  Patch,
 } from '@nestjs/common';
 import { ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { CreateUserDto } from '../dto/create-user.dto';
@@ -28,7 +29,7 @@ export class ProfileController {
 
   @ApiOperation({ summary: 'Update User' })
   @ApiResponse({ status: 200, type: User })
-  @Put(':id')
+  @Patch(':id')
   @UseGuards(UserGuard)
   updateUser(
     @Param('id') id: string,

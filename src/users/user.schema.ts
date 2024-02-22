@@ -11,14 +11,10 @@ import { Role } from 'src/roles/schemas/roles.schema';
 import { UserRoles } from 'src/roles/schemas/user-roles.schema';
 import { Message } from 'src/socket/shema/message.schema';
 import { Comment } from 'src/comments/schema/comments.schema';
-
-interface UserAttributes {
-  email: string;
-  password: string;
-}
+import { CreateUserDto } from './dto/create-user.dto';
 
 @Table({ tableName: 'users' })
-export class User extends Model<User, UserAttributes> {
+export class User extends Model<User, CreateUserDto> {
   @ApiProperty({ example: '1', description: 'Unique ID' })
   @Column({
     type: DataType.INTEGER,
@@ -28,9 +24,9 @@ export class User extends Model<User, UserAttributes> {
   })
   id: number;
 
-  // @ApiProperty({ example: 'John1264DL', description: 'Name' })
-  // @Column({ type: DataType.STRING, unique: true, allowNull: false })
-  // name: string;
+  @ApiProperty({ example: 'user', description: 'Username' })
+  @Column({ type: DataType.STRING, unique: true, allowNull: false })
+  username: string;
 
   @ApiProperty({ example: 'user@mail.com', description: 'Email' })
   @Column({ type: DataType.STRING, unique: true, allowNull: false })

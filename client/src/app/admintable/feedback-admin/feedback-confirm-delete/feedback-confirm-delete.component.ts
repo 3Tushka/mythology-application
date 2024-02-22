@@ -19,7 +19,8 @@ export class FeedbackConfirmDeleteComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
       this.id = params.get('id');
-      console.log(this.id);
+
+      console.log('id:', this.id);
     });
   }
 

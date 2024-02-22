@@ -37,6 +37,7 @@ export class ProfileComponent implements OnInit {
       }
 
       this.updateUserInfo = this.fb.group({
+        username: '',
         email: '',
         password: '',
       });

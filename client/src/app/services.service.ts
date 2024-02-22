@@ -54,7 +54,7 @@ export class ServicesService {
 
   update(id: number, updateDTO: ArticleInterface): Observable<any> {
     const url = `http://localhost:1268/articles/${id}`;
-    return this.httpClient.put(url, updateDTO);
+    return this.httpClient.patch(url, updateDTO);
   }
 
   getSearchArticles(searchValue: string): Observable<ArticleInterface[]> {
@@ -119,7 +119,7 @@ export class ServicesService {
 
   updateUserInfo(id: string, updateDTO: any): Observable<any> {
     const url = `http://localhost:1268/profile/${id}`;
-    return this.httpClient.put(url, updateDTO);
+    return this.httpClient.patch(url, updateDTO);
   }
 
   createFeedbackMessage(dto: CreateFeedbackMessageDto) {

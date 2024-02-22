@@ -30,26 +30,26 @@
                     From:
                     <span class="accordion__from--email">{{ item.email }}</span>
                   </div>
-                  <div class="accordion__controll">
-                    <button
-                      mat-raised-button
-                      color="warn"
-                      [routerLink]="[item.id]"
-                    >
-                      Delete
-                    </button>
-                    <button
-                      mat-raised-button
-                      color="primary"
-                      [routerLink]="[item.id, 'mark-as-fixed']"
-                      [disabled]="item.isFixed === true"
-                    >
-                      Mark
-                    </button>
-                  </div>
                 </mat-panel-description>
               </mat-expansion-panel-header>
               <p>{{ item.message }}.</p>
+              <div class="accordion__controll">
+                <button
+                  mat-raised-button
+                  color="warn"
+                  [routerLink]="[item.id, 'delete']"
+                >
+                  Delete
+                </button>
+                <button
+                  mat-raised-button
+                  color="primary"
+                  [routerLink]="[item.id, 'mark-as-fixed']"
+                  [disabled]="item.isFixed === true"
+                >
+                  Mark
+                </button>
+              </div>
             </mat-expansion-panel>
           </mat-accordion>
         </div>

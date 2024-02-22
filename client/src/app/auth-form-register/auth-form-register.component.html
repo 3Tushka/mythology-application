@@ -7,6 +7,19 @@
       </div>
       <form [formGroup]="form" (submit)="submit()" class="auth-form">
         <mat-form-field>
+          <mat-label>Usernam</mat-label>
+          <input
+            type="text"
+            formControlName="username"
+            class="form-control"
+            placeholder="Username"
+            matInput
+            required
+          />
+          <mat-error *ngIf="form.invalid">Username is required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
           <mat-label>Email</mat-label>
           <input
             type="email"

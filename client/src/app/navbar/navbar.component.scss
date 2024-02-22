@@ -7,7 +7,7 @@
 
     background-color: $background-black;
     color: $color-cream;
-    font-family: "Barlow-Condensed";
+
     width: 100%;
     height: auto;
 
@@ -50,11 +50,11 @@
 
         button {
             color: $color-cream;
-            font-family: "Barlow-Condensed";
+            font-family: $font-medival;
 
             height: auto;
             padding: 1.2rem 0;
-            font-size: 1.4rem;
+            font-size: 1.1rem;
             text-transform: uppercase;
         }
     }

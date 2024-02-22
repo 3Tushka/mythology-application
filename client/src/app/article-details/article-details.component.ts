@@ -48,6 +48,13 @@ export class ArticleDetailsComponent implements OnInit {
         content: '',
         category: '',
         image: '',
+        temper: '',
+        location: '',
+        appointment: '',
+        amulet: '',
+        fairing: '',
+        magicaItem: '',
+        origin: '',
       });
     });
   }

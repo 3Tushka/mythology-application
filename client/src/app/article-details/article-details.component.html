@@ -5,61 +5,67 @@
     <mat-icon routerLink="/admin-table/articles-admin" *ngIf="isAdmin == true">
       keyboard_arrow_left
     </mat-icon>
+    <mat-icon routerLink="/articles"> keyboard_arrow_left </mat-icon>
   </div>
   <div class="article-detail" *ngIf="data">
     <!--  -->
-
-    <div class="article-detail__header">
-      <div class="article-detail__header__info">
-        <div class="article-detail__header__info__title">
-          <h2>{{ data.title }}</h2>
-          <h3>{{ data.category }}</h3>
+    <div class="article-detail__box" *ngIf="showForm == false">
+      <div class="article-detail__header">
+        <div class="article-detail__header__info">
+          <div class="article-detail__header__info__title">
+            <h2>{{ data.title }}</h2>
+            /
+            <h3>{{ data.category }}</h3>
+          </div>
+          <p class="article-detail__details" *ngIf="data.temper">
+            <img src="../../assets/images/temper.png" alt="" />
+            {{ data.temper }}
+          </p>
+          <p class="article-detail__details" *ngIf="data.origin">
+            <img src="../../assets/images/origin.png" alt="" />
+            {{ data.origin }}
+          </p>
+          <p class="article-detail__details" *ngIf="data.location">
+            <img src="../../assets/images/location.png" alt="" />{{
+              data.location
+            }}
+          </p>
+          <p class="article-detail__details" *ngIf="data.amulet">
+            <img src="../../assets/images/amulet.png" alt="" />{{ data.amulet }}
+          </p>
+          <p class="article-detail__details" *ngIf="data.appointment">
+            <img src="../../assets/images/appointment.png" alt="" />{{
+              data.appointment
+            }}
+          </p>
+          <p class="article-detail__details" *ngIf="data.fairing">
+            <img src="../../assets/images/fairing.png" alt="" />{{
+              data.fairing
+            }}
+          </p>
+          <p class="article-detail__details" *ngIf="data.magicaItem">
+            <img src="../../assets/images/magicItem.png" alt="" />{{
+              data.magicaItem
+            }}
+          </p>
         </div>
-        <p class="article-detail__details">
-          <img src="../../assets/images/temper.png" alt="" />
-          {{ data.temper }}
-        </p>
-        <p class="article-detail__details">
-          <img src="../../assets/images/origin.png" alt="" /> {{ data.origin }}
-        </p>
-        <p class="article-detail__details">
-          <img src="../../assets/images/location.png" alt="" />{{
-            data.location
-          }}
-        </p>
-        <p class="article-detail__details">
-          <img src="../../assets/images/amulet.png" alt="" />{{ data.amulet }}
-        </p>
-        <p class="article-detail__details">
-          <img src="../../assets/images/appointment.png" alt="" />{{
-            data.appointment
-          }}
-        </p>
-        <p class="article-detail__details">
-          <img src="../../assets/images/fairing.png" alt="" />{{ data.fairing }}
-        </p>
-        <p class="article-detail__details">
-          <img src="../../assets/images/magicItem.png" alt="" />{{
-            data.magicaItem
-          }}
-        </p>
-      </div>
-      <div class="article-detail__header__image">
-        <img
-          src="../../assets/images/зображення_2024-02-20_203909771-removebg-preview.png"
-          alt="article image"
-        />
-      </div>
+        <div class="article-detail__header__image">
+          <img
+            src="../../assets/images/зображення_2024-02-20_203909771-removebg-preview.png"
+            alt="article image"
+          />
+        </div>
 
-      <!--  -->
-    </div>
-    <div class="article-detail__content">
-      <p [innerHTML]="data.content"></p>
-    </div>
-    <div class="article-detail__comments">
-      <button mat-raised-button color="primary" [routerLink]="['comments']">
-        Go to Comments
-      </button>
+        <!--  -->
+      </div>
+      <div class="article-detail__content">
+        <p [innerHTML]="data.content"></p>
+      </div>
+      <div class="article-detail__comments">
+        <button mat-raised-button color="primary" [routerLink]="['comments']">
+          Go to Comments
+        </button>
+      </div>
     </div>
     <div class="article-detail__controll" *ngIf="isAdmin == true">
       <button
@@ -68,7 +74,7 @@
         (click)="showForm = true"
         *ngIf="showForm == false"
       >
-        Update
+        Оновити
       </button>
       <div class="article-detail__form-box" *ngIf="showForm">
         <form
@@ -77,7 +83,7 @@
           (ngSubmit)="updateModel()"
         >
           <div class="article-detail__form-title">
-            <h2>Update article</h2>
+            <h2>Оновити статтю</h2>
             <button
               class="close"
               mat-icon-button
@@ -88,29 +94,117 @@
             </button>
           </div>
           <mat-form-field>
-            <mat-label>Title</mat-label>
+            <mat-label>Назва</mat-label>
             <input
               type="text"
               formControlName="title"
               class="form-control"
               placeholder="Title"
               matInput
-              required
             />
-            <mat-error *ngIf="updateForm.invalid">Title is required</mat-error>
+            <mat-error *ngIf="updateForm.invalid">Назва is required</mat-error>
           </mat-form-field>
 
           <mat-form-field>
-            <mat-label>Content</mat-label>
+            <mat-label>Вдача</mat-label>
+            <input
+              type="text"
+              formControlName="temper"
+              class="form-control"
+              placeholder="Вдача"
+              matInput
+            />
+            <mat-error *ngIf="updateForm.invalid">Вдача is required</mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Місце проживання</mat-label>
+            <input
+              type="text"
+              formControlName="location"
+              class="form-control"
+              placeholder="Місце проживання"
+              matInput
+            />
+            <mat-error *ngIf="updateForm.invalid"
+              >Місце проживання is required</mat-error
+            >
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Магічні здібності/призначення</mat-label>
+            <input
+              type="text"
+              formControlName="appointment"
+              class="form-control"
+              placeholder="Магічні здібності/призначення"
+              matInput
+            />
+            <mat-error *ngIf="updateForm.invalid"
+              >Appointment is required</mat-error
+            >
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Оберіг</mat-label>
+            <input
+              type="text"
+              formControlName="amulet"
+              class="form-control"
+              placeholder="Оберіг"
+              matInput
+            />
+            <mat-error *ngIf="updateForm.invalid">Amulet is required</mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Гостинець (чим задобрити)</mat-label>
+            <input
+              type="text"
+              formControlName="airing"
+              class="form-control"
+              placeholder="Гостинець"
+              matInput
+            />
+            <mat-error *ngIf="updateForm.invalid"
+              >Fairing is required</mat-error
+            >
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Чарівний предмет</mat-label>
+            <input
+              type="text"
+              formControlName="magicaItem"
+              class="form-control"
+              placeholder="Чарівний предмет"
+              matInput
+            />
+            <mat-error *ngIf="updateForm.invalid">Item is required</mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Походження</mat-label>
+            <input
+              type="text"
+              formControlName="origin"
+              class="form-control"
+              placeholder="Походження"
+              matInput
+            />
+            <mat-error *ngIf="updateForm.invalid">Origin is required</mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Текст</mat-label>
             <textarea
               type="text"
               formControlName="content"
               class="form-control"
-              placeholder="Content"
+              placeholder="Текст"
               matInput
               cols="35"
               rows="8"
-              required
             ></textarea>
             <mat-error *ngIf="updateForm.invalid"
               >Content is required</mat-error
@@ -118,14 +212,13 @@
           </mat-form-field>
 
           <mat-form-field>
-            <mat-label>Content</mat-label>
+            <mat-label>Категорія</mat-label>
             <input
               type="text"
               formControlName="category"
               class="form-control"
-              placeholder="Category"
+              placeholder="Категорія"
               matInput
-              required
             />
             <mat-error *ngIf="updateForm.invalid"
               >Category is required</mat-error
@@ -138,7 +231,7 @@
             type="submit"
             [disabled]="updateForm.invalid"
           >
-            Submit
+            Підтвердити
           </button>
         </form>
       </div>

@@ -9,12 +9,13 @@
     </div>
   </div> -->
   <div class="navbar__bottom">
-    <button mat-button routerLink="/">Home</button>
-    <button mat-button routerLink="/articles">Articles</button>
-    <button mat-button routerLink="/calendar">Calendar</button>
-    <button mat-button routerLink="/auth/login" *ngIf="notLogged">Login</button>
+    <button mat-button routerLink="/">Головна</button>
+    <button mat-button routerLink="/articles">Статті</button>
+    <button mat-button routerLink="/calendar">Календар</button>
+    <button mat-button routerLink="/auth/login" *ngIf="notLogged">Логін</button>
     <button mat-button [routerLink]="['/profile', id]" *ngIf="!notLogged">
-      Profile
+      Профіль
     </button>
+    <button mat-button routerLink="/admin-table" *ngIf="isAdmin">Адмін</button>
   </div>
 </mat-toolbar>

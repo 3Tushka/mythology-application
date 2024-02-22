@@ -9,6 +9,7 @@ export class NavbarComponent implements OnInit {
   id: string | null | undefined;
 
   notLogged = true;
+  isAdmin = false;
 
   constructor() {}
 
@@ -21,7 +22,7 @@ export class NavbarComponent implements OnInit {
       this.id = decodedPayload.id;
 
       this.notLogged = false;
-      // this.isAdmin = decodedPayload.roles[0].value;
+      this.isAdmin = decodedPayload.roles[0].value;
     }
   }
 }

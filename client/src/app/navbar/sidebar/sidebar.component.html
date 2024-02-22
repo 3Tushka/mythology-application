@@ -2,21 +2,21 @@
   <div class="sidenav">
     <ul class="sidenav__list">
       <li class="sidenav__list__item" *ngIf="urlPath !== 'feedback-admin'">
-        <a class="sidenav__list__link" routerLink="../feedback-admin">
-          Feedback
+        <a class="sidenav__list__link" routerLink="/feedback-admin">
+          Зворотній зв'язок
         </a>
       </li>
       <li class="sidenav__list__item" *ngIf="urlPath !== 'users-admin'">
-        <a class="sidenav__list__link" routerLink="../users-admin"> Users </a>
-      </li>
-      <li class="sidenav__list__item" *ngIf="urlPath !== 'articles-admin'">
-        <a class="sidenav__list__link" routerLink="../articles-admin">
-          Articles
+        <a class="sidenav__list__link" routerLink="/users-admin">
+          Користувачі
         </a>
       </li>
+      <li class="sidenav__list__item" *ngIf="urlPath !== 'articles-admin'">
+        <a class="sidenav__list__link" routerLink="/articles-admin"> Статті </a>
+      </li>
       <li class="sidenav__list__item" *ngIf="urlPath !== 'calendar-admin'">
-        <a class="sidenav__list__link" routerLink="../calendar-admin">
-          Calendar
+        <a class="sidenav__list__link" routerLink="/calendar-admin">
+          Календар
         </a>
       </li>
     </ul>

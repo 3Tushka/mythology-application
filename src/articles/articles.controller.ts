@@ -10,6 +10,7 @@ import {
   UseGuards,
   UseInterceptors,
   Query,
+  Patch,
 } from '@nestjs/common';
 import { ArticlesService } from './articles.service';
 import { CreateArticleDto } from './dto/create-article.dto';
@@ -56,7 +57,7 @@ export class ArticlesController {
 
   @Roles('admin')
   @UseGuards(RolesGuard)
-  @Put(':id')
+  @Patch(':id')
   updateArticle(@Param('id') id: number, @Body() updateDTO: UpdateArticleDto) {
     return this.articleService.updateArticle(id, updateDTO);
   }
