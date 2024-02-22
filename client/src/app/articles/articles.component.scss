@@ -1,7 +1,6 @@
 @import "../../assets/variables.scss";
 
 .article {
-    padding: 2rem 1.2rem 0;
     display: flex;
     gap: 2rem;
 
@@ -14,7 +13,7 @@
         margin: 1rem 0;
         max-width: 50svh;
         background: $background-black;
-        font-family: "Barlow-Condensed";
+        font-family: $font-medival;
         color: $color-cream;
         cursor: pointer;
 
@@ -25,17 +24,6 @@
         }
     }
 
-    .search {
-        &__form {
-            display: flex;
-            justify-content: center;
-
-            mat-form-field {
-                width: 50%;
-            }
-        }
-    }
-
     mat-card-title {
         font-size: 2rem;
     }
@@ -43,10 +31,12 @@
     mat-card-subtitle {
         font-size: 1.1rem;
         margin-bottom: 6px;
+        color: $color-cream;
     }
 
     &__wrapper {
         width: 100%;
+        min-height: 100svh;
 
         .open-form-box {
             display: flex;
@@ -92,5 +82,63 @@
     &__content {
         display: flex;
         gap: 2rem;
+    }
+
+    &__sidebar {
+        padding: 2rem 1rem;
+        max-width: 550px;
+        border-bottom: 1px solid $color-cream;
+        display: flex;
+        flex-direction: column;
+        background-color: $background-black;
+
+        &__search {
+            width: fit-content;
+
+            &__form {
+                display: flex;
+                justify-content: center;
+            }
+        }
+
+        &__filter {
+            margin: 2rem 0;
+
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+
+            &__title {
+                font-size: 1.3rem;
+                font-weight: 400;
+                font-family: $font-medival;
+                background-color: #ffffff;
+                border-radius: 90px;
+                padding: 5px 10px;
+                color: $background-black;
+
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+            }
+
+            &__button {
+                min-width: 100px;
+                background-color: $background-black;
+                border: 0;
+                color: $color-cream;
+                font-family: $font-medival;
+                font-size: 1.2rem;
+                text-align: start;
+                padding: 0.5rem 1rem;
+                cursor: pointer;
+                transition: all 0.3s ease-in-out;
+            }
+
+            &__button:hover {
+                transform: translateX(10px);
+                color: #ffffff;
+            }
+        }
     }
 }

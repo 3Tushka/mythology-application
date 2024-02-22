@@ -25,11 +25,16 @@ export class ArticlesComponent implements OnInit {
     searchValue: '',
   });
 
-  filter = {
-    gods: false,
-    creatures: false,
-    myths: false,
-  };
+  articleArray = [
+    { category: 'creatures' },
+    { category: 'spirits' },
+    { category: 'gods' },
+    { category: 'Монстр' },
+    { category: 'Дух' },
+    { category: 'Бог' },
+  ];
+
+  selectedCategory: string | null;
 
   constructor(
     private articlesService: ServicesService,
@@ -40,18 +45,32 @@ export class ArticlesComponent implements OnInit {
     this.fetchSearchData();
   }
 
+  filterCategory(category: string): void {
+    this.selectedCategory = category;
+  }
+
+  showAll() {
+    this.selectedCategory = null;
+  }
+
   fetchSearchData(): void {
     this.articlesService
       .getSearchArticles(this.searchValue)
       .subscribe((res) => {
         this.searchedArticle = res;
         this.seartchForm.reset();
+
+        console.log(this.searchedArticle);
       });
   }
 
   onSearchSubmit(): void {
     this.searchValue = this.seartchForm.value.searchValue ?? '';
     this.fetchSearchData();
+  }
+
+  resetSearch(): void {
+    this.searchValue = '';
   }
 
   onAddButtonClick(): void {

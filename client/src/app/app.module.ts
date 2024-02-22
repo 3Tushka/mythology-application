@@ -44,6 +44,7 @@ import { FeedbackConfirmMarkComponent } from './admintable/feedback-admin/feedba
 import { UsersAdminComponent } from './admintable/users-admin/users-admin.component';
 import { ArticlesAdminComponent } from './admintable/articles-admin/articles-admin.component';
 import { CalendarAdminComponent } from './admintable/calendar-admin/calendar-admin.component';
+import { FilterComponent } from './navbar/sidebar/filter/filter.component';
 
 @NgModule({
   declarations: [
@@ -71,6 +72,7 @@ import { CalendarAdminComponent } from './admintable/calendar-admin/calendar-adm
     UsersAdminComponent,
     ArticlesAdminComponent,
     CalendarAdminComponent,
+    FilterComponent,
   ],
   imports: [
     BrowserModule,

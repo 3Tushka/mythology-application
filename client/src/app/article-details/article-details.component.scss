@@ -111,5 +111,17 @@
                 width: 50%;
             }
         }
+
+        &__details {
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            gap: 2rem;
+
+            img {
+                max-width: 64px;
+                max-height: 84px;
+            }
+        }
     }
 }
