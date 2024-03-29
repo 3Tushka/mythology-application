@@ -85,8 +85,8 @@
     }
 
     &__sidebar {
-        padding: 2rem 1rem;
-        max-width: 550px;
+        padding: 2rem 0;
+        max-width: 350px;
         border-bottom: 1px solid $color-cream;
         display: flex;
         flex-direction: column;
@@ -112,10 +112,9 @@
                 font-size: 1.3rem;
                 font-weight: 400;
                 font-family: $font-medival;
-                background-color: #ffffff;
-                border-radius: 90px;
                 padding: 5px 10px;
-                color: $background-black;
+                border-bottom: 2px solid $color-cream;
+                color: $color-cream;
 
                 display: flex;
                 flex-direction: row;
@@ -123,7 +122,7 @@
             }
 
             &__button {
-                min-width: 100px;
+                width: 100%;
                 background-color: $background-black;
                 border: 0;
                 color: $color-cream;
@@ -137,6 +136,7 @@
 
             &__button:hover {
                 transform: translateX(10px);
+                width: 80%;
                 color: #ffffff;
             }
         }

@@ -15,6 +15,7 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {
     const token = localStorage.getItem('token');
+
     if (token) {
       const tokenParts = token.split('.');
       const payload = tokenParts[1];
@@ -22,7 +23,14 @@ export class NavbarComponent implements OnInit {
       this.id = decodedPayload.id;
 
       this.notLogged = false;
-      this.isAdmin = decodedPayload.roles[0].value;
+      this.isAdmin = decodedPayload.roles[0].value === 'admin';
+
+      const expirationDate = new Date(decodedPayload.exp * 1000);
+      const currentDate = new Date();
+
+      if (currentDate > expirationDate) {
+        localStorage.removeItem('token');
+      }
     }
   }
 }
