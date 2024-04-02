@@ -30,7 +30,7 @@ import { FeedbackAdminModule } from './feedback/feedback-admin/feedback-admin.mo
       envFilePath: '.env',
     }),
     ServeStaticModule.forRoot({
-      rootPath: path.join(__dirname, 'static'),
+      rootPath: path.join(__dirname, '..', 'src/static'),
     }),
     SequelizeModule.forRoot({
       dialect: 'postgres',
