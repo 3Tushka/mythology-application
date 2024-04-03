@@ -39,7 +39,17 @@
           </div>
         </div>
       </div>
-      <button (click)="logout()">Logout</button>
+      <div class="profile__logout">
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          class="profile__form__button"
+          (click)="logout()"
+        >
+          Logout
+        </button>
+      </div>
     </div>
     <div class="profile__controll">
       <form

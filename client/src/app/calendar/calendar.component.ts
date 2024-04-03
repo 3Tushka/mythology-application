@@ -2,9 +2,7 @@ import { Component } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 import { ServicesService } from '../services.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-calendar',
@@ -18,6 +16,21 @@ export class CalendarComponent {
   jwtHelper = new JwtHelperService();
 
   isAddButtonClicked = false;
+
+  monthArray = [
+    'Грудень',
+    'Січень',
+    'Лютий',
+    'Березень',
+    'Квітень',
+    'Травень',
+    'Червень',
+    'Липень',
+    'Серпень',
+    'Вересень',
+    'Жовтень',
+    'Листопад',
+  ];
 
   constructor(
     private calendarService: ServicesService,

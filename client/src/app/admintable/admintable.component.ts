@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
 import { ServicesService } from '../services.service';
 
 @Component({
@@ -9,18 +7,7 @@ import { ServicesService } from '../services.service';
   styleUrls: ['./admintable.component.scss'],
 })
 export class AdmintableComponent implements OnInit {
-  users: any[] = [];
+  constructor(private readonly adminTableService: ServicesService) {}
 
-  constructor(
-    private route: ActivatedRoute,
-    private readonly adminTableService: ServicesService,
-    private fb: FormBuilder,
-    private router: Router,
-  ) {}
-
-  ngOnInit(): void {
-    this.adminTableService.getUsers().subscribe((users) => {
-      this.users = users;
-    });
-  }
+  ngOnInit(): void {}
 }

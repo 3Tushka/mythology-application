@@ -20,6 +20,10 @@
 }
 
 .profile {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
     &__info {
         display: flex;
         flex-direction: column;

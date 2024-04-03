@@ -94,24 +94,33 @@
         </button>
       </form>
     </div>
-    <div class="calendar" *ngIf="!isAddButtonClicked">
-      <mat-card
-        *ngFor="let calendar of calendar$ | async"
-        class="calendar__item"
-        [routerLink]="['/calendar', calendar.id]"
-      >
-        <div class="calendar__header">
-          <div class="calendar__header__day">
-            <span>{{ calendar.day }}</span>
+
+    <div class="calendar-box" *ngIf="!isAddButtonClicked">
+      <ng-container *ngFor="let month of monthArray">
+        <div class="calendar">
+          <div class="calendar__title">
+            <span>{{ month }}</span>
           </div>
-          <div class="calendar__header__month">
-            <span>{{ calendar.month }}</span>
+          <div class="calendar__content">
+            <div
+              class="calendar__month"
+              *ngFor="let calendar of calendar$ | async"
+            >
+              <mat-card
+                *ngIf="calendar.month === month"
+                class="calendar__item"
+                [routerLink]="['/calendar', calendar.id]"
+              >
+                <div class="calendar__header">
+                  <div class="calendar__header__day">
+                    <span>{{ calendar.day }}</span>
+                  </div>
+                </div>
+              </mat-card>
+            </div>
           </div>
         </div>
-        <mat-card-content class="calendar__title">
-          <span>{{ calendar.title }}</span>
-        </mat-card-content>
-      </mat-card>
+      </ng-container>
     </div>
   </div>
   <app-footer></app-footer>
