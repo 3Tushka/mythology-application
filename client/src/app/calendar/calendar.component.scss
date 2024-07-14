@@ -13,6 +13,11 @@
     border-radius: 10px;
     padding: 20px;
     margin: 20px;
+    min-height: 60vh;
+
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
 }
 
 .calendar-box {
@@ -28,14 +33,15 @@
         text-align: center;
         padding: 0.5rem 1rem;
         background: white;
-        min-width: 304px;
-        max-width: 560px;
-        border-radius: 4px;
+        width: 100%;
+        max-width: 350px;
 
+        border-radius: 4px;
         &__content {
             display: flex;
             flex-direction: row;
-            gap: 0.1875rem;
+            flex-wrap: wrap;
+            justify-content: start;
         }
         &__month {
             display: flex;
@@ -43,6 +49,7 @@
         }
 
         &__item {
+            margin: 5px;
             padding: 8px 16px;
             display: flex;
             flex-direction: row;
@@ -76,20 +83,21 @@
             font-weight: 400;
             font-family: cursive;
         }
+    }
+}
 
-        &__admin {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+.calendar-admin {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 35vw;
 
-            &__form {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-
-                max-width: 50%;
-            }
-        }
+    &__form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
     }
 }

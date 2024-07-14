@@ -8,8 +8,11 @@
       <div class="calendar-admin__content__header">
         <h1 class="calendar-admin__content__header__title">Calendar</h1>
       </div>
-      <div class="calendar-admin__calendar" *ngFor="let item of calendar">
-        <div class="calendar-admin__calendar__item">
+      <div class="calendar-admin__calendar">
+        <div
+          class="calendar-admin__calendar__item"
+          *ngFor="let item of calendar"
+        >
           <div class="calendar-admin__calendar__day">
             <span>{{ item.day }}</span>
           </div>
@@ -22,9 +25,11 @@
           <div class="calendar-admin__calendar__controll">
             <button
               mat-raised-button
-              color="warn"
+              color="primary"
               [routerLink]="['/calendar', item.id]"
-            ></button>
+            >
+              Змінити
+            </button>
           </div>
         </div>
       </div>

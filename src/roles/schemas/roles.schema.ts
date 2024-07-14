@@ -8,11 +8,7 @@ import {
 } from 'sequelize-typescript';
 import { User } from 'src/users/user.schema';
 import { UserRoles } from './user-roles.schema';
-
-interface RoleCreationAttrs {
-  value: string;
-  description: string;
-}
+import { RoleCreationAttrs } from '../roles.interface';
 
 @Table({ tableName: 'roles' })
 export class Role extends Model<Role, RoleCreationAttrs> {

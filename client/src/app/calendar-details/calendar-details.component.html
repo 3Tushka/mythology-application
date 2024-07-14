@@ -20,7 +20,7 @@
       </div>
     </div>
 
-    <div class="calendar-details__controll">
+    <div class="calendar-details__controll" *ngIf="isAdmin">
       <button
         mat-raised-button
         color="primary"
@@ -54,6 +54,18 @@
               <mat-icon>close</mat-icon>
             </mat-icon>
           </div>
+          <mat-form-field>
+            <mat-label>Day</mat-label>
+            <input
+              type="text"
+              formControlName="day"
+              class="form-control"
+              placeholder="Title"
+              matInput
+              required
+            />
+            <mat-error *ngIf="updateForm.invalid">Title is required</mat-error>
+          </mat-form-field>
           <mat-form-field>
             <mat-label>Title</mat-label>
             <input

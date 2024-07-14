@@ -19,12 +19,8 @@
         >close</mat-icon
       >
     </div>
-    <div class="calendar__admin" *ngIf="isAddButtonClicked">
-      <form
-        [formGroup]="form"
-        (submit)="submit()"
-        class="calendar__admin__form"
-      >
+    <div class="calendar-admin" *ngIf="isAddButtonClicked">
+      <form [formGroup]="form" (submit)="submit()" class="calendar-admin__form">
         <mat-form-field>
           <mat-label>ID</mat-label>
           <input
@@ -36,6 +32,17 @@
             required
           />
           <mat-error *ngIf="form.invalid">ID is required</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Title</mat-label>
+          <input
+            type="text"
+            formControlName="title"
+            class="form-control"
+            placeholder="Title"
+            matInput
+          />
+          <mat-error *ngIf="form.invalid">Title is required</mat-error>
         </mat-form-field>
         <mat-form-field>
           <mat-label>Day</mat-label>
@@ -72,17 +79,6 @@
             required
           ></textarea>
           <mat-error *ngIf="form.invalid">Content is required</mat-error>
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>Title</mat-label>
-          <input
-            type="text"
-            formControlName="title"
-            class="form-control"
-            placeholder="Title"
-            matInput
-          />
-          <mat-error *ngIf="form.invalid">Title is required</mat-error>
         </mat-form-field>
         <button
           mat-raised-button

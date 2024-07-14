@@ -1,11 +1,5 @@
 import { Column, DataType, Table, Model } from 'sequelize-typescript';
-
-interface CalendarCreationAttr {
-  day: number;
-  month: string;
-  title: string;
-  content: string;
-}
+import { CalendarCreationAttr } from '../calendar.interface';
 
 @Table({ tableName: 'calendar' })
 export class Calendar extends Model<Calendar, CalendarCreationAttr> {

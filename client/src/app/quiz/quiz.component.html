@@ -1,0 +1,48 @@
+<app-navbar></app-navbar>
+
+<main class="quiz-container">
+  <section class="question-container">
+    <article class="question-container-item">
+      <header class="score">
+        <p>Питання {{ currentQuestionIndex + 1 }} of {{ questions.length }}</p>
+      </header>
+      <h1 class="title">
+        <p>{{ questions[currentQuestionIndex].question }}</p>
+      </h1>
+      <form class="form">
+        <mat-radio-group
+          [(ngModel)]="questions[currentQuestionIndex].userAnswer"
+        >
+          <div
+            *ngFor="let option of questions[currentQuestionIndex].options"
+            class="option"
+          >
+            <mat-radio-button
+              color="primary"
+              [value]="option"
+              class="option-btn"
+              >{{ option }}</mat-radio-button
+            >
+          </div>
+        </mat-radio-group>
+      </form>
+      <footer class="control">
+        <button mat-raised-button color="primary" (click)="prevQuestion()">
+          Previous
+        </button>
+        <button mat-raised-button color="primary" (click)="nextQuestion()">
+          Next
+        </button>
+      </footer>
+    </article>
+    <div *ngIf="showPopup" class="popup">
+      <div class="popup-content">
+        <p>Ви набрали {{ score }} з {{ questions.length }}</p>
+        <button mat-raised-button color="primary" (click)="closePopup()">
+          Повернутися
+        </button>
+      </div>
+    </div>
+  </section>
+</main>
+<app-footer></app-footer>

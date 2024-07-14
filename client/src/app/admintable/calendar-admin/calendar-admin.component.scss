@@ -1,0 +1,39 @@
+.calendar-admin {
+    display: flex;
+    width: 100%;
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+
+        width: 100%;
+        min-height: 50svh;
+        background: url("../../../assets/backgrounds/kiwihug-3gifzboyZk0-unsplash2.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+
+        padding: 2rem 4rem;
+    }
+
+    &__calendar {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 1rem;
+
+        &__item {
+            padding: 1rem 2rem;
+            border-radius: 5px;
+            background: white;
+
+            width: 100%;
+            max-width: 100px;
+
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            gap: 0.3rem;
+        }
+    }
+}

@@ -1,11 +1,21 @@
 <div class="article-wrapper">
   <app-navbar></app-navbar>
-  <!-- <div class="art" *ngIf="data?.category == 'Vampires'"> -->
+  <!-- <div class="art" *ngIf="data?.category == 'Vampires'"> dunno wtf is this -->
   <div class="article-link">
-    <mat-icon routerLink="/admin-table/articles-admin" *ngIf="isAdmin == true">
-      keyboard_arrow_left
-    </mat-icon>
-    <mat-icon routerLink="/articles"> keyboard_arrow_left </mat-icon>
+    <!-- <app-breadcrumb></app-breadcrumb> -->
+    <div class="button-wrapper">
+      <!-- <button
+        mat-icon-button
+        routerLink="/admin-table/articles-admin"
+        *ngIf="isAdmin == true"
+        class="back-button"
+      >
+        <mat-icon>keyboard_arrow_left</mat-icon>
+      </button>
+      <button mat-icon-button routerLink="/articles" class="back-button">
+        <mat-icon>keyboard_arrow_left</mat-icon>
+      </button> -->
+    </div>
   </div>
   <div class="article-detail" *ngIf="data">
     <!--  -->
@@ -67,7 +77,7 @@
         </button>
       </div>
     </div>
-    <div class="article-detail__controll" *ngIf="isAdmin == true">
+    <!-- <div class="article-detail__controll" *ngIf="isAdmin == true">
       <button
         mat-raised-button
         color="primary"
@@ -245,7 +255,7 @@
       >
         Delete
       </button>
-    </div>
+    </div> -->
   </div>
   <app-footer></app-footer>
   <!-- </div> -->

@@ -9,14 +9,7 @@ import {
 } from 'sequelize-typescript';
 import { User } from 'src/users/user.schema';
 import { Comment } from 'src/comments/schema/comments.schema';
-
-interface ArticlesCreationAttributes {
-  userId: number;
-  title: string;
-  content: string;
-  image: string;
-  category: string;
-}
+import { ArticlesCreationAttributes } from '../article.interface';
 
 @Table({ tableName: 'articles' })
 export class Article extends Model<Article, ArticlesCreationAttributes> {

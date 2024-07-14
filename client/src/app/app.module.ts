@@ -16,6 +16,7 @@ import { ArticleDetailsComponent } from './article-details/article-details.compo
 import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatIconModule } from '@angular/material/icon';
+import { MatRadioModule } from '@angular/material/radio';
 
 import { NgOptimizedImage } from '@angular/common';
 import { CalendarDetailsComponent } from './calendar-details/calendar-details.component';
@@ -44,6 +45,8 @@ import { FeedbackConfirmMarkComponent } from './admintable/feedback-admin/feedba
 import { UsersAdminComponent } from './admintable/users-admin/users-admin.component';
 import { ArticlesAdminComponent } from './admintable/articles-admin/articles-admin.component';
 import { CalendarAdminComponent } from './admintable/calendar-admin/calendar-admin.component';
+import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
+import { QuizComponent } from './quiz/quiz.component';
 
 @NgModule({
   declarations: [
@@ -71,8 +74,11 @@ import { CalendarAdminComponent } from './admintable/calendar-admin/calendar-adm
     UsersAdminComponent,
     ArticlesAdminComponent,
     CalendarAdminComponent,
+    BreadcrumbsComponent,
+    QuizComponent,
   ],
   imports: [
+    MatRadioModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,

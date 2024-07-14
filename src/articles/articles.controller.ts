@@ -45,11 +45,6 @@ export class ArticlesController {
     return this.articleService.getArticleById(id);
   }
 
-  // @Get()
-  // getAll() {
-  //   return this.articleService.getAllArticles();
-  // }
-
   @Get()
   async filterArticles(@Query('title') query: string) {
     return this.articleService.searchArticle(query);

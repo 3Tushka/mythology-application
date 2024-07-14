@@ -12,6 +12,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class CalendarDetailsComponent implements OnInit {
   id: string | undefined | null;
   calendarData: undefined | CalendarDetailsInterface;
+  notLogged = true;
+  isAdmin = false;
 
   updateForm: FormGroup;
 
@@ -25,6 +27,25 @@ export class CalendarDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    const token = localStorage.getItem('token');
+
+    if (token) {
+      const tokenParts = token.split('.');
+      const payload = tokenParts[1];
+      const decodedPayload = JSON.parse(window.atob(payload));
+      this.id = decodedPayload.id;
+
+      this.notLogged = false;
+      this.isAdmin = decodedPayload.roles[0].value === 'admin';
+
+      const expirationDate = new Date(decodedPayload.exp * 1000);
+      const currentDate = new Date();
+
+      if (currentDate > expirationDate) {
+        localStorage.removeItem('token');
+      }
+    }
+
     this.route.paramMap.subscribe((params) => {
       this.id = params.get('id');
 
@@ -37,6 +58,7 @@ export class CalendarDetailsComponent implements OnInit {
       }
 
       this.updateForm = this.fb.group({
+        day: '',
         title: '',
         content: '',
       });
@@ -65,7 +87,7 @@ export class CalendarDetailsComponent implements OnInit {
     );
   }
 
-  delete(id: string): void {
+  deleteModel(id: string): void {
     this.calendarDetailsService.deleteCalendar(id).subscribe();
   }
 

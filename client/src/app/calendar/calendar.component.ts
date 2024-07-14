@@ -16,6 +16,7 @@ export class CalendarComponent {
   jwtHelper = new JwtHelperService();
 
   isAddButtonClicked = false;
+  isFormVisible = true; // Assuming you have this flag to control the form visibility
 
   monthArray = [
     'Грудень',
@@ -53,13 +54,17 @@ export class CalendarComponent {
     const token = localStorage.getItem('token');
     console.log(token);
     if (token) {
-      const base64Url = token.split('.')[1]; // Get payload part of the JWT token
-      const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/'); // Convert Base64Url to Base64
-      const payload = JSON.parse(window.atob(base64)); // Decode Base64 and parse JSON
+      const base64Url = token.split('.')[1];
+      const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+      const payload = JSON.parse(window.atob(base64));
 
       console.log(payload.roles[0].value);
       if (payload.roles[0].value === 'admin') {
-        this.calendarService.createCalendarItem(this.form.value).subscribe();
+        this.calendarService
+          .createCalendarItem(this.form.value)
+          .subscribe(() => {
+            this.isFormVisible = false; // Hide the form after submission
+          });
         console.log(this.form.value);
       } else {
         (this as any).isAdmin = false;

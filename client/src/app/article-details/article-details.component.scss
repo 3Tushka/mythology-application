@@ -127,3 +127,17 @@
         }
     }
 }
+
+.button-wrapper {
+    margin: 0;
+    padding: 2rem;
+    .back-button {
+        background-color: $background-black;
+        border-radius: 0;
+        width: 3.375rem;
+    }
+    .back-button:hover {
+        background-color: aqua;
+        border-radius: 0;
+    }
+}

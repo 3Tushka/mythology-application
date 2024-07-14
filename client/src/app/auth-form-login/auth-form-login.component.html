@@ -3,7 +3,7 @@
   <div class="auth-wrapper">
     <div class="auth-background">
       <div class="auth-title">
-        <h2>Login</h2>
+        <h2>Логін</h2>
       </div>
       <form [formGroup]="form" (submit)="submit()" class="auth-form">
         <mat-form-field>
@@ -17,11 +17,11 @@
             matInput
             required
           />
-          <mat-error *ngIf="form.invalid">Email is required</mat-error>
+          <mat-error *ngIf="form.invalid">Необхідний email</mat-error>
         </mat-form-field>
 
         <mat-form-field>
-          <mat-label>Password</mat-label>
+          <mat-label>Пароль</mat-label>
           <input
             type="password"
             formControlName="password"
@@ -31,11 +31,11 @@
             matInput
             required
           />
-          <mat-error *ngIf="form.invalid">Password is required</mat-error>
+          <mat-error *ngIf="form.invalid">Необхідний Пароль</mat-error>
         </mat-form-field>
         <div class="auth-register-box">
-          <span class="auth-register-box__title">Dont have account?</span>
-          <a routerLink="/auth/registration"> Create one! </a>
+          <span class="auth-register-box__title">Не зареєстровані? </span>
+          <a routerLink="/auth/registration"> Гайда до нас </a>
         </div>
         <button
           mat-raised-button
@@ -43,7 +43,7 @@
           type="submit"
           [disabled]="form.invalid"
         >
-          Sign in
+          Вхід
         </button>
       </form>
     </div>

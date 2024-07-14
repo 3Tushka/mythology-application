@@ -16,6 +16,7 @@
     <button mat-button [routerLink]="['/profile', id]" *ngIf="!notLogged">
       Профіль
     </button>
+    <button mat-button routerLink="/quiz">Тест</button>
     <button mat-button routerLink="/admin-table" *ngIf="isAdmin">Адмін</button>
   </div>
 </mat-toolbar>

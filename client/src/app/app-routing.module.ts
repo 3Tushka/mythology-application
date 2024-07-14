@@ -20,43 +20,79 @@ import { FeedbackConfirmMarkComponent } from './admintable/feedback-admin/feedba
 import { UsersAdminComponent } from './admintable/users-admin/users-admin.component';
 import { ArticlesAdminComponent } from './admintable/articles-admin/articles-admin.component';
 import { CalendarAdminComponent } from './admintable/calendar-admin/calendar-admin.component';
+import { QuizComponent } from './quiz/quiz.component';
 
 const routes: Routes = [
-  { path: '', component: HomepageComponent },
-  { path: 'articles', component: ArticlesComponent },
-  { path: 'calendar', component: CalendarComponent },
-  { path: 'articles/:id', component: ArticleDetailsComponent },
-  { path: 'calendar/:id', component: CalendarDetailsComponent },
-  { path: 'auth/login', component: AuthFormLoginComponent },
-  { path: 'auth/registration', component: AuthFormRegisterComponent },
-  { path: 'articles/:id/comments', component: CommentsComponent },
+  { path: '', component: HomepageComponent, data: { breadcrumb: 'Home' } },
+  {
+    path: 'articles',
+    component: ArticlesComponent,
+    data: { breadcrumb: 'Articles' },
+  },
+  {
+    path: 'calendar',
+    component: CalendarComponent,
+    data: { breadcrumb: 'Calendar' },
+  },
+  {
+    path: 'articles/:id',
+    component: ArticleDetailsComponent,
+    data: { breadcrumb: 'Article' },
+  },
+  {
+    path: 'calendar/:id',
+    component: CalendarDetailsComponent,
+    data: { breadcrumb: 'Calendar' },
+  },
+  {
+    path: 'auth/login',
+    component: AuthFormLoginComponent,
+    data: { breadcrumb: 'Login' },
+  },
+  {
+    path: 'auth/registration',
+    component: AuthFormRegisterComponent,
+    data: { breadcrumb: 'Registraion' },
+  },
+  {
+    path: 'articles/:id/comments',
+    component: CommentsComponent,
+    data: { breadcrumb: 'Comments' },
+  },
   {
     path: 'articles/:id/comments/:commentId',
     component: ConfirmDeleteComponent,
+    data: { breadcrumb: 'Comment' },
   },
   {
     path: 'articles/:id/comments/:commentId/update',
     component: UpdateCommentComponent,
+    data: { breadcrumb: 'Comment Update' },
   },
   {
     path: 'admin-table',
     component: AdmintableComponent,
+    data: { breadcrumb: 'Admin' },
   },
   {
     path: 'profile/:id',
     component: ProfileComponent,
+    data: { breadcrumb: 'Profile' },
   },
   {
     path: 'error',
     component: ErrorPageComponent,
+    data: { breadcrumb: 'Error' },
   },
   {
     path: 'feedback',
     component: FeedbackComponent,
+    data: { breadcrumb: 'Feedback' },
   },
   {
     path: 'feedback-admin',
     component: FeedbackAdminComponent,
+    data: { breadcrumb: 'Feedback Admin' },
 
     children: [
       {
@@ -78,6 +114,7 @@ const routes: Routes = [
     path: 'calendar-admin',
     component: CalendarAdminComponent,
   },
+  { path: 'quiz', component: QuizComponent },
 ];
 
 @NgModule({
